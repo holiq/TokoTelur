@@ -12,7 +12,7 @@ uses
   UEditProduct in 'product\UEditProduct.pas' {FEditProduct},
   UListTransaction in 'transaction\UListTransaction.pas' {FListTransaction},
   UPenjualan in 'UPenjualan.pas' {Fpenjualan},
-  URestock in 'URestock.pas' {Frestock},
+  URestock in 'URestock.pas' {FRestock},
   UDataModule in 'UDataModule.pas' {DataModule},
   UFunction in 'UFunction.pas';
 

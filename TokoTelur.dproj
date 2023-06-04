@@ -166,7 +166,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="URestock.pas">
-            <Form>Frestock</Form>
+            <Form>FRestock</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UDataModule.pas">

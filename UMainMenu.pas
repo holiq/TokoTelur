@@ -61,7 +61,8 @@ end;
 
 procedure TFMainMenu.RESTOCK1Click(Sender: TObject);
 begin
-Frestock.Show;
+  Application.CreateForm(TFRestock, FRestock);
+  FRestock.Show;
 end;
 
 procedure TFMainMenu.PRODUCT1Click(Sender: TObject);

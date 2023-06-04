@@ -115,6 +115,7 @@ object Fpenjualan: TFpenjualan
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QProductname: TStringField
       FieldName = 'name'

@@ -41,7 +41,7 @@ type
 var
   Fpenjualan: TFpenjualan;
   id_product, name_product: string;
-  dashPos, price_product: Integer;
+  dashPos, price_product, stock_product: Integer;
 
 implementation
 
@@ -58,6 +58,11 @@ begin
     SQL.Text:= 'INSERT INTO toko_telur.transactions (user_id, product_id,	quantity,	price_kg, total_price, type, created_at, updated_at) VALUES ('+
       QuotedStr(id_user)+','+QuotedStr(id_product)+','+QuotedStr(EditQty.Text)+','+QuotedStr(EditPrice.Text)+','+QuotedStr(EditTotal.Text)+','+QuotedStr('penjualan')+','+QuotedStr(dateNow)+','+QuotedStr(dateNow)+
     ')';
+    Execute;
+    SQL.Clear;
+    SQL.Text:= 'UPDATE toko_telur.products SET '+
+      'stock_kg='+QuotedStr(IntToStr(stock_product-StrToInt(EditQty.Text)))+' '+
+      'WHERE products.id='+QuotedStr(id_product);
     Execute;
   end;
   FPenjualan.Close;
@@ -78,13 +83,14 @@ begin
   end;
 
   QProduct.SQL.Clear;
-  QProduct.SQL.Text:= 'SELECT * FROM products WHERE id = :idp';
+  QProduct.SQL.Text:= 'SELECT id, name, price_kg, stock_kg FROM products WHERE id = :idp';
   QProduct.ParamByName('idp').AsString:= id_product;
   QProduct.Open;
   while not QProduct.Eof do
   begin
     EditPrice.Text:= QProductprice_kg.AsString;
     price_product:= QProductprice_kg.AsInteger;
+    stock_product:= QProductstock_kg.AsInteger;
     QProduct.Next;
   end;
   QProduct.Close;
@@ -102,7 +108,8 @@ begin
     while not QProduct.Eof do
     begin
       ComboBox1.Items.Add(
-        QProduct.FieldByName('name').AsString+'-'+
+        QProduct.FieldByName('name').AsString+'('+
+        QProduct.FieldByName('stock_kg').AsString+')-'+
         QProduct.FieldByName('id').AsString
       );
       QProduct.Next;

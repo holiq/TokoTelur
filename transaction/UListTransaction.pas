@@ -30,6 +30,15 @@ type
     Label4: TLabel;
     Label1: TLabel;
     Edit1: TEdit;
+    QTransactionid: TFDAutoIncField;
+    QTransactionfull_name: TStringField;
+    QTransactionproduct_name: TStringField;
+    QTransactionquantity: TIntegerField;
+    QTransactionprice_kg: TIntegerField;
+    QTransactiontotal_price: TIntegerField;
+    QTransactiontype: TStringField;
+    QTransactioncreated_at: TDateTimeField;
+    QTransactionupdated_at: TDateTimeField;
     procedure BitBtn5Click(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);

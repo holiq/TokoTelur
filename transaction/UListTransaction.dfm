@@ -175,6 +175,11 @@ object FListTransaction: TFListTransaction
       end
       item
         Expanded = False
+        FieldName = 'product_name'
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'quantity'
         Visible = True
       end
@@ -205,13 +210,14 @@ object FListTransaction: TFListTransaction
       end>
   end
   object QTransaction: TFDQuery
-    Active = True
     Connection = DataModule.FDConnection1
     SQL.Strings = (
       
-        'SELECT transactions.id, full_name, quantity, price_kg, total_pri' +
-        'ce,type, transactions.created_at, transactions.updated_at FROM t' +
-        'ransactions INNER JOIN users ON transactions.user_id = users.id'
+        'SELECT transactions.id, full_name, name AS product_name, quantit' +
+        'y, transactions.price_kg, transactions.total_price, transactions' +
+        '.type, transactions.created_at, transactions.updated_at FROM tra' +
+        'nsactions INNER JOIN users ON transactions.user_id = users.id IN' +
+        'NER JOIN products ON transactions.product_id = products.id'
       '&WHERE')
     Left = 192
     Top = 160
@@ -221,6 +227,58 @@ object FListTransaction: TFListTransaction
         Name = 'WHERE'
         DataType = mdIdentifier
       end>
+    object QTransactionid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object QTransactionfull_name: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'full_name'
+      Origin = 'full_name'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 255
+    end
+    object QTransactionproduct_name: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'product_name'
+      Origin = 'name'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 255
+    end
+    object QTransactionquantity: TIntegerField
+      FieldName = 'quantity'
+      Origin = 'quantity'
+      Required = True
+    end
+    object QTransactionprice_kg: TIntegerField
+      FieldName = 'price_kg'
+      Origin = 'price_kg'
+      Required = True
+    end
+    object QTransactiontotal_price: TIntegerField
+      FieldName = 'total_price'
+      Origin = 'total_price'
+      Required = True
+    end
+    object QTransactiontype: TStringField
+      FieldName = 'type'
+      Origin = 'type'
+      Required = True
+      Size = 255
+    end
+    object QTransactioncreated_at: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'created_at'
+      Origin = 'created_at'
+    end
+    object QTransactionupdated_at: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'updated_at'
+      Origin = 'updated_at'
+    end
   end
   object DataSource1: TDataSource
     DataSet = QTransaction

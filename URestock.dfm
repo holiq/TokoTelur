@@ -1,7 +1,7 @@
-object Frestock: TFrestock
+object FRestock: TFRestock
   Left = 0
   Top = 0
-  Caption = 'Frestock'
+  Caption = 'FRestock'
   ClientHeight = 458
   ClientWidth = 586
   Color = clSkyBlue
@@ -12,6 +12,7 @@ object Frestock: TFrestock
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -55,7 +56,7 @@ object Frestock: TFrestock
     Font.Style = []
     ParentFont = False
   end
-  object Edit2: TEdit
+  object EditQty: TEdit
     Left = 160
     Top = 173
     Width = 257
@@ -69,20 +70,23 @@ object Frestock: TFrestock
     Height = 25
     Caption = 'SAVE'
     TabOrder = 1
+    OnClick = BitBtn1Click
   end
-  object Edit3: TEdit
+  object EditPrice: TEdit
     Left = 160
     Top = 237
     Width = 257
     Height = 21
     TabOrder = 2
+    OnChange = EditPriceChange
   end
-  object Edit4: TEdit
+  object EditTotal: TEdit
     Left = 160
     Top = 301
     Width = 257
     Height = 21
     TabOrder = 3
+    OnChange = EditTotalChange
   end
   object BitBtn2: TBitBtn
     Left = 303
@@ -99,5 +103,29 @@ object Frestock: TFrestock
     Width = 218
     Height = 21
     TabOrder = 5
+    OnChange = ComboBox1Change
+  end
+  object QProduct: TFDQuery
+    Connection = DataModule.FDConnection1
+    SQL.Strings = (
+      'SELECT id, name, stock_kg FROM products')
+    Left = 88
+    Top = 168
+    object QProductid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object QProductname: TStringField
+      FieldName = 'name'
+      Origin = 'name'
+      Required = True
+      Size = 255
+    end
+    object QProductstock_kg: TIntegerField
+      FieldName = 'stock_kg'
+      Origin = 'stock_kg'
+      Required = True
+    end
   end
 end
