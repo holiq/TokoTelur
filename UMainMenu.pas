@@ -20,6 +20,7 @@ type
     RESTOCK1: TMenuItem;
     Panel1: TPanel;
     BitBtn1: TBitBtn;
+    REPORT1: TMenuItem;
     procedure PENJUALAN1Click(Sender: TObject);
     procedure USER1Click(Sender: TObject);
     procedure PRODUCT1Click(Sender: TObject);

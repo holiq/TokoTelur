@@ -69,6 +69,7 @@ object FListTransaction: TFListTransaction
       Align = alLeft
       Caption = 'DELETE'
       TabOrder = 1
+      OnClick = BitBtn4Click
     end
     object BitBtn2: TBitBtn
       Left = 82
@@ -100,9 +101,9 @@ object FListTransaction: TFListTransaction
     object Label4: TLabel
       Left = 226
       Top = 6
-      Width = 87
+      Width = 115
       Height = 18
-      Caption = 'List Product'
+      Caption = 'List Transaction'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -231,6 +232,7 @@ object FListTransaction: TFListTransaction
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QTransactionfull_name: TStringField
       AutoGenerateValue = arDefault
@@ -284,5 +286,28 @@ object FListTransaction: TFListTransaction
     DataSet = QTransaction
     Left = 416
     Top = 184
+  end
+  object QProduct: TFDQuery
+    Connection = DataModule.FDConnection1
+    SQL.Strings = (
+      'SELECT id, name, stock_kg FROM products')
+    Left = 104
+    Top = 160
+    object QProductid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object QProductname: TStringField
+      FieldName = 'name'
+      Origin = 'name'
+      Required = True
+      Size = 255
+    end
+    object QProductstock_kg: TIntegerField
+      FieldName = 'stock_kg'
+      Origin = 'stock_kg'
+      Required = True
+    end
   end
 end

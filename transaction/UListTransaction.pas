@@ -39,9 +39,14 @@ type
     QTransactiontype: TStringField;
     QTransactioncreated_at: TDateTimeField;
     QTransactionupdated_at: TDateTimeField;
+    QProduct: TFDQuery;
+    QProductid: TFDAutoIncField;
+    QProductname: TStringField;
+    QProductstock_kg: TIntegerField;
     procedure BitBtn5Click(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +55,8 @@ type
 
 var
   FListTransaction: TFListTransaction;
+  transaction_type: string;
+  stock_product, current_stcok: Integer;
 
 implementation
 
@@ -72,9 +79,51 @@ begin
   FPenjualan.Free;
 end;
 
+procedure TFListTransaction.BitBtn4Click(Sender: TObject);
+begin
+  if Application.MessageBox('Apakah yakin menghapus transaction tersebut?',
+  'konfirmasi', MB_YESNO or MB_ICONINFORMATION) = idyes then
+  begin
+    QProduct.SQL.Clear;
+    QProduct.SQL.Text:= 'SELECT id, name, stock_kg FROM products WHERE id = :idp';
+    QProduct.ParamByName('idp').AsString:= id_product;
+    QProduct.Open;
+    while not QProduct.Eof do
+    begin;
+      stock_product:= QProductstock_kg.AsInteger;
+      QProduct.Next;
+    end;
+    QProduct.Close;
+
+    if QTransactiontype.AsString='penjualan' then
+    begin
+      current_stcok:= stock_product+QTransactionquantity.AsInteger;
+    end
+    else
+    begin
+      current_stcok:= stock_product-QTransactionquantity.AsInteger
+    end;
+
+    with DataModule.QTemp do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text:= 'DELETE FROM toko_telur.transactions '+
+        'WHERE transactions.id='+QuotedStr(IntToStr(QTransactionid.AsInteger));
+      Execute;
+
+      SQL.Text:= 'UPDATE toko_telur.products SET '+
+        'stock_kg='+QuotedStr(IntToStr(current_stcok))+' '+
+        'WHERE products.name='+QuotedStr(QTransactionproduct_name.AsString);
+      Execute;
+    end;
+    BtnRefresh.Click;
+  end;
+end;
+
 procedure TFListTransaction.BitBtn5Click(Sender: TObject);
 begin
-  Application.Terminate;
+  FListTransaction.Close;
 end;
 
 end.
