@@ -47,6 +47,7 @@ type
     procedure BtnRefreshClick(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +63,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDataModule, UPenjualan;
+uses UDataModule, UPenjualan, URestock;
 
 procedure TFListTransaction.BtnRefreshClick(Sender: TObject);
 begin
@@ -70,6 +71,13 @@ begin
     QTransaction.Refresh
   else
     QTransaction.Open;
+end;
+
+procedure TFListTransaction.BitBtn2Click(Sender: TObject);
+begin
+  Application.CreateForm(TFRestock, FRestock);
+  FRestock.ShowModal;
+  FRestock.Free;
 end;
 
 procedure TFListTransaction.BitBtn3Click(Sender: TObject);

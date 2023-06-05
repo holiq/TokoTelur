@@ -28,6 +28,7 @@ type
     procedure RESTOCK1Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure REPORT1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +42,7 @@ implementation
 
 {$R *.dfm}
 
-uses Ulistuser, Upenjualan, Urestock, Ulistproduct, ULogin, UListTransaction;
+uses Ulistuser, Upenjualan, Urestock, Ulistproduct, ULogin, UListTransaction, UReport;
 
 procedure TFMainMenu.BitBtn1Click(Sender: TObject);
 begin
@@ -58,6 +59,12 @@ procedure TFMainMenu.PENJUALAN1Click(Sender: TObject);
 begin
   Application.CreateForm(TFPenjualan, FPenjualan);
   FPenjualan.Show;
+end;
+
+procedure TFMainMenu.REPORT1Click(Sender: TObject);
+begin
+  Application.CreateForm(TFReport, FReport);
+  FReport.Show;
 end;
 
 procedure TFMainMenu.RESTOCK1Click(Sender: TObject);

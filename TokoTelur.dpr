@@ -14,7 +14,8 @@ uses
   UPenjualan in 'UPenjualan.pas' {Fpenjualan},
   URestock in 'URestock.pas' {FRestock},
   UDataModule in 'UDataModule.pas' {DataModule},
-  UFunction in 'UFunction.pas';
+  UFunction in 'UFunction.pas',
+  UReport in 'UReport.pas' {FReport};
 
 {$R *.res}
 
@@ -24,5 +25,6 @@ begin
   Application.CreateForm(TFMainMenu, FMainMenu);
   Application.CreateForm(TFLogin, FLogin);
   Application.CreateForm(TDataModule, DataModule);
+  Application.CreateForm(TFReport, FReport);
   Application.Run;
 end.

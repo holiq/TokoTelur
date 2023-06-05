@@ -1,7 +1,6 @@
 object FMainMenu: TFMainMenu
   Left = 0
   Top = 0
-  Caption = 'DataModule.FDConnection1'
   ClientHeight = 375
   ClientWidth = 661
   Color = clMoneyGreen
@@ -2998,6 +2997,7 @@ object FMainMenu: TFMainMenu
     Top = 240
     object REPORT1: TMenuItem
       Caption = 'REPORT'
+      OnClick = REPORT1Click
     end
     object PRODUCT1: TMenuItem
       Caption = 'PRODUCT'

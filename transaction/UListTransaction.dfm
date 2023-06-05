@@ -79,6 +79,7 @@ object FListTransaction: TFListTransaction
       Align = alLeft
       Caption = 'RESTOCK'
       TabOrder = 2
+      OnClick = BitBtn2Click
     end
     object BitBtn3: TBitBtn
       Left = 4
@@ -297,6 +298,7 @@ object FListTransaction: TFListTransaction
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object QProductname: TStringField
       FieldName = 'name'
