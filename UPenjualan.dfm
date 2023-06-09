@@ -10,10 +10,8 @@ object Fpenjualan: TFpenjualan
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 160
@@ -111,11 +109,11 @@ object Fpenjualan: TFpenjualan
       'SELECT id, name, stock_kg, price_kg FROM products')
     Left = 56
     Top = 88
-    object QProductid: TFDAutoIncField
+    object QProductid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object QProductname: TStringField
       FieldName = 'name'

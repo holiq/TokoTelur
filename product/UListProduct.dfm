@@ -9,9 +9,7 @@ object FListProduct: TFListProduct
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
@@ -20,6 +18,8 @@ object FListProduct: TFListProduct
     Height = 35
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 358
+    ExplicitWidth = 624
     object BitBtn1: TBitBtn
       Left = 561
       Top = 1
@@ -29,6 +29,7 @@ object FListProduct: TFListProduct
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn1Click
+      ExplicitLeft = 551
     end
   end
   object Panel1: TPanel
@@ -40,6 +41,7 @@ object FListProduct: TFListProduct
     Color = clAppWorkSpace
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 624
     object Splitter1: TSplitter
       Left = 79
       Top = 1
@@ -164,6 +166,7 @@ object FListProduct: TFListProduct
     Height = 35
     Align = alTop
     TabOrder = 3
+    ExplicitWidth = 624
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
@@ -202,8 +205,7 @@ object FListProduct: TFListProduct
     Connection = DataModule.FDConnection1
     SQL.Strings = (
       'SELECT * FROM products'
-      '&WHERE'
-      '&ORDERBY')
+      '&WHERE')
     Left = 88
     Top = 248
     MacroData = <
@@ -211,17 +213,12 @@ object FListProduct: TFListProduct
         Value = Null
         Name = 'WHERE'
         DataType = mdIdentifier
-      end
-      item
-        Value = Null
-        Name = 'ORDERBY'
-        DataType = mdIdentifier
       end>
-    object QProductid: TFDAutoIncField
+    object QProductid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object QProductname: TStringField
       FieldName = 'name'
@@ -239,12 +236,12 @@ object FListProduct: TFListProduct
       Origin = 'price_kg'
       Required = True
     end
-    object QProductcreated_at: TDateTimeField
+    object QProductcreated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'created_at'
       Origin = 'created_at'
     end
-    object QProductupdated_at: TDateTimeField
+    object QProductupdated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'updated_at'
       Origin = 'updated_at'

@@ -23,7 +23,7 @@ type
     QProduct: TFDQuery;
     Label5: TLabel;
     EditTotal: TEdit;
-    QProductid: TFDAutoIncField;
+    QProductid: TLargeintField;
     QProductname: TStringField;
     QProductstock_kg: TIntegerField;
     QProductprice_kg: TIntegerField;

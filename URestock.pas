@@ -23,7 +23,7 @@ type
     ComboBox1: TComboBox;
     Label5: TLabel;
     QProduct: TFDQuery;
-    QProductid: TFDAutoIncField;
+    QProductid: TLargeintField;
     QProductname: TStringField;
     QProductstock_kg: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);

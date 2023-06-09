@@ -1,8 +1,8 @@
 object FMainMenu: TFMainMenu
   Left = 0
   Top = 0
-  ClientHeight = 375
-  ClientWidth = 661
+  ClientHeight = 497
+  ClientWidth = 914
   Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -10,17 +10,15 @@ object FMainMenu: TFMainMenu
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu1
-  OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 655
+    Width = 908
     Height = 22
     Align = alTop
     Alignment = taCenter
@@ -37,25 +35,25 @@ object FMainMenu: TFMainMenu
   object Label2: TLabel
     Left = 0
     Top = 28
-    Width = 661
-    Height = 23
+    Width = 914
+    Height = 24
     Align = alTop
     Alignment = taCenter
     Caption = '"BERKAH  JAYA"'
     Font.Charset = ANSI_CHARSET
     Font.Color = clRed
-    Font.Height = -19
+    Font.Height = -20
     Font.Name = 'Wide Latin'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     Layout = tlCenter
-    ExplicitWidth = 295
+    ExplicitWidth = 322
   end
   object Image1: TImage
     Left = 0
-    Top = 51
-    Width = 661
-    Height = 292
+    Top = 52
+    Width = 914
+    Height = 405
     Align = alClient
     Picture.Data = {
       0A544A504547496D616765A96B0100FFD8FFE000104A46494600010100000100
@@ -2969,27 +2967,28 @@ object FMainMenu: TFMainMenu
       37C5126FEDA2C499DDD231FD163EEE36CCDF54DB6E97E873DB122FC0B2B21861
       7E59B4851825C5FE28CD5490A1B895C4A2EBE04D5F3FFFD9}
     Stretch = True
-    ExplicitLeft = 160
-    ExplicitTop = 120
-    ExplicitWidth = 272
-    ExplicitHeight = 153
+    ExplicitTop = 51
+    ExplicitWidth = 1105
+    ExplicitHeight = 590
   end
   object Panel1: TPanel
     Left = 0
-    Top = 343
-    Width = 661
-    Height = 32
+    Top = 457
+    Width = 914
+    Height = 40
     Align = alBottom
     TabOrder = 0
     object BitBtn1: TBitBtn
-      Left = 585
+      Left = 838
       Top = 1
       Width = 75
-      Height = 30
+      Height = 38
       Align = alRight
       Caption = 'EXIT'
       TabOrder = 0
       OnClick = BitBtn1Click
+      ExplicitLeft = 828
+      ExplicitHeight = 44
     end
   end
   object MainMenu1: TMainMenu

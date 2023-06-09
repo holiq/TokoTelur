@@ -27,6 +27,8 @@ type
     SplitView2: TSplitView;
     Label2: TLabel;
     Memo2: TMemo;
+    Splitter5: TSplitter;
+    BitBtn4: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private
@@ -49,37 +51,31 @@ begin
   Memo1.Clear;
 
   QPenjualan.SQL.Clear;
-  QPenjualan.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS income FROM transactions WHERE DATE(created_at)=CURDATE()';
+  QPenjualan.SQL.Text:= 'SELECT '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() THEN quantity ELSE 0 END) qty_today, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() THEN total_price ELSE 0 END) price_today, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -1 THEN quantity ELSE 0 END) qty_yesterday, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -1 THEN total_price ELSE 0 END) price_yesterday, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -2 THEN quantity ELSE 0 END) qty_two_days_ago, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -2 THEN total_price ELSE 0 END) price_two_days_ago,'+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -3 THEN quantity ELSE 0 END) qty_three_days_ago, '+
+    'SUM(CASE WHEN DATE(created_at) = CURDATE() -3 THEN total_price ELSE 0 END) price_three_days_ago '+
+    'FROM transactions WHERE TYPE='+QuotedStr('penjualan');
   QPenjualan.Open;
   while not QPenjualan.Eof do
   begin
     Memo1.Lines.Add('Hari ini');
-    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('total_sell').AsString);
-    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('income').AsCurrency]));
-    QPenjualan.Next;
-  end;
-  QPenjualan.Close;
-
-  QPenjualan.SQL.Clear;
-  QPenjualan.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS income FROM transactions WHERE DATE(created_at)=CURDATE()-1';
-  QPenjualan.Open;
-  while not QPenjualan.Eof do
-  begin
+    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('qty_today').AsString);
+    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('price_today').AsCurrency]));
     Memo1.Lines.Add('Kemarin');
-    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('total_sell').AsString);
-    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('income').AsCurrency]));
-    QPenjualan.Next;
-  end;
-  QPenjualan.Close;
-
-  QPenjualan.SQL.Clear;
-  QPenjualan.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS income FROM transactions WHERE DATE(created_at)=CURDATE()-2';
-  QPenjualan.Open;
-  while not QPenjualan.Eof do
-  begin
+    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('qty_yesterday').AsString);
+    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('price_yesterday').AsCurrency]));
     Memo1.Lines.Add('2 Hari yang lalu');
-    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('total_sell').AsString);
-    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('income').AsCurrency]));
+    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('qty_two_days_ago').AsString);
+    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('price_two_days_ago').AsCurrency]));
+    Memo1.Lines.Add('3 Hari yang lalu');
+    Memo1.Lines.Add('Total Terjual: '+QPenjualan.FieldByName('qty_three_days_ago').AsString);
+    Memo1.Lines.Add('Total Pendapatan: '+Format('Rp. %n', [QPenjualan.FieldByName('price_three_days_ago').AsCurrency]));
     QPenjualan.Next;
   end;
   QPenjualan.Close;
@@ -87,9 +83,8 @@ end;
 
 procedure TFReport.FormCreate(Sender: TObject);
 begin
-  Memo1.Clear;
   QPenjualan.SQL.Clear;
-  QPenjualan.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS income FROM transactions';
+  QPenjualan.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS income FROM transactions WHERE type='+QuotedStr('penjualan');
   QPenjualan.Open;
   while not QPenjualan.Eof do
   begin
@@ -99,6 +94,18 @@ begin
     QPenjualan.Next;
   end;
   QPenjualan.Close;
+
+  QRestock.SQL.Clear;
+  QRestock.SQL.Text:= 'SELECT SUM(quantity) AS total_sell, SUM(total_price) AS expenses FROM transactions WHERE type='+QuotedStr('restock');
+  QRestock.Open;
+  while not QRestock.Eof do
+  begin
+    Memo2.Lines.Add('Total Keseluruhan');
+    Memo2.Lines.Add('Total Restock: '+QRestock.FieldByName('total_sell').AsString+'kg');
+    Memo2.Lines.Add('Total Pengeluaran: '+Format('Rp. %n', [QRestock.FieldByName('expenses').AsCurrency]));
+    QRestock.Next;
+  end;
+  QRestock.Close;
 end;
 
 end.

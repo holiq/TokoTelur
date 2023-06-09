@@ -1,22 +1,20 @@
 object FReport: TFReport
   Left = 0
   Top = 0
-  ClientHeight = 318
-  ClientWidth = 717
+  ClientHeight = 333
+  ClientWidth = 734
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Splitter4: TSplitter
     Left = 365
     Top = 33
-    Height = 285
+    Height = 300
     ExplicitLeft = 257
     ExplicitTop = 1
     ExplicitHeight = 282
@@ -24,10 +22,11 @@ object FReport: TFReport
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 717
+    Width = 734
     Height = 33
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 724
     object Splitter1: TSplitter
       Left = 1
       Top = 1
@@ -46,6 +45,14 @@ object FReport: TFReport
       Top = 1
       Height = 31
       ExplicitLeft = 166
+    end
+    object Splitter5: TSplitter
+      Left = 235
+      Top = 1
+      Height = 31
+      ExplicitLeft = 240
+      ExplicitTop = 24
+      ExplicitHeight = 100
     end
     object BitBtn1: TBitBtn
       Left = 4
@@ -75,15 +82,25 @@ object FReport: TFReport
       Caption = 'BULANAN'
       TabOrder = 2
     end
+    object BitBtn4: TBitBtn
+      Left = 238
+      Top = 1
+      Width = 75
+      Height = 31
+      Align = alLeft
+      Caption = 'TAHUNAN'
+      TabOrder = 3
+    end
   end
   object SplitView1: TSplitView
     Left = 0
     Top = 33
     Width = 365
-    Height = 285
+    Height = 300
     OpenedWidth = 365
     Placement = svpLeft
     TabOrder = 1
+    ExplicitHeight = 282
     object Label1: TLabel
       AlignWithMargins = True
       Left = 3
@@ -105,21 +122,21 @@ object FReport: TFReport
       Left = 0
       Top = 25
       Width = 365
-      Height = 260
+      Height = 275
       Align = alClient
-      Lines.Strings = (
-        'Memo1')
       TabOrder = 0
+      ExplicitHeight = 257
     end
   end
   object SplitView2: TSplitView
     Left = 368
     Top = 33
     Width = 365
-    Height = 285
+    Height = 300
     OpenedWidth = 365
     Placement = svpLeft
     TabOrder = 2
+    ExplicitHeight = 282
     object Label2: TLabel
       AlignWithMargins = True
       Left = 3
@@ -141,11 +158,10 @@ object FReport: TFReport
       Left = 0
       Top = 25
       Width = 365
-      Height = 260
+      Height = 275
       Align = alClient
-      Lines.Strings = (
-        'Memo2')
       TabOrder = 0
+      ExplicitHeight = 257
     end
   end
   object QPenjualan: TFDQuery

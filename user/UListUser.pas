@@ -30,13 +30,13 @@ type
     Label4: TLabel;
     QUser: TFDQuery;
     DataSource1: TDataSource;
-    QUserid: TFDAutoIncField;
+    QUserid: TLargeintField;
     QUserfull_name: TStringField;
     QUserusername: TStringField;
     QUserrole: TStringField;
     QUserpassword: TStringField;
-    QUsercreated_at: TDateTimeField;
-    QUserupdated_at: TDateTimeField;
+    QUsercreated_at: TSQLTimeStampField;
+    QUserupdated_at: TSQLTimeStampField;
     procedure BtnEditClick(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);

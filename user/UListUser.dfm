@@ -10,9 +10,7 @@ object FListUser: TFListUser
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -23,6 +21,7 @@ object FListUser: TFListUser
     Color = clActiveBorder
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 624
     object Splitter1: TSplitter
       Left = 1
       Top = 1
@@ -102,6 +101,7 @@ object FListUser: TFListUser
     Height = 35
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 624
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
@@ -141,6 +141,8 @@ object FListUser: TFListUser
     Height = 35
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 358
+    ExplicitWidth = 624
     object BitBtn5: TBitBtn
       Left = 558
       Top = 1
@@ -150,6 +152,7 @@ object FListUser: TFListUser
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn5Click
+      ExplicitLeft = 548
     end
   end
   object DBGrid1: TDBGrid
@@ -205,14 +208,21 @@ object FListUser: TFListUser
   object QUser: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
-      'SELECT * FROM users')
+      'SELECT * FROM users'
+      '&WHERE')
     Left = 184
     Top = 208
-    object QUserid: TFDAutoIncField
+    MacroData = <
+      item
+        Value = Null
+        Name = 'WHERE'
+        DataType = mdIdentifier
+      end>
+    object QUserid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object QUserfull_name: TStringField
       FieldName = 'full_name'
@@ -238,12 +248,12 @@ object FListUser: TFListUser
       Required = True
       Size = 255
     end
-    object QUsercreated_at: TDateTimeField
+    object QUsercreated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'created_at'
       Origin = 'created_at'
     end
-    object QUserupdated_at: TDateTimeField
+    object QUserupdated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'updated_at'
       Origin = 'updated_at'

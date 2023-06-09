@@ -10,10 +10,8 @@ object FRestock: TFRestock
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 160
@@ -111,7 +109,8 @@ object FRestock: TFRestock
       'SELECT id, name, stock_kg FROM products')
     Left = 88
     Top = 168
-    object QProductid: TFDAutoIncField
+    object QProductid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]

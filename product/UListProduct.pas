@@ -22,12 +22,6 @@ type
     QProduct: TFDQuery;
     DataSource1: TDataSource;
     BtnRefresh: TBitBtn;
-    QProductid: TFDAutoIncField;
-    QProductname: TStringField;
-    QProductstock_kg: TIntegerField;
-    QProductprice_kg: TIntegerField;
-    QProductcreated_at: TDateTimeField;
-    QProductupdated_at: TDateTimeField;
     Splitter3: TSplitter;
     BtnDelete: TBitBtn;
     Panel4: TPanel;
@@ -35,6 +29,12 @@ type
     EditSearch: TEdit;
     Label4: TLabel;
     Splitter4: TSplitter;
+    QProductid: TLargeintField;
+    QProductname: TStringField;
+    QProductstock_kg: TIntegerField;
+    QProductprice_kg: TIntegerField;
+    QProductcreated_at: TSQLTimeStampField;
+    QProductupdated_at: TSQLTimeStampField;
     procedure BitBtn1Click(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);
@@ -101,12 +101,19 @@ end;
 
 procedure TFListProduct.EditSearchChange(Sender: TObject);
 begin
-  QProduct.MacroByName('WHERE').Value:= 'WHERE products.id='+QuotedStr(EditSearch.Text);
+  QProduct.MacroByName('WHERE').Value:= ' WHERE name LIKE '+
+    QuotedStr('%'+EditSearch.Text+'%');
+  QProduct.Open;
+  while not QProduct.Eof do
+  begin
+    QProduct.Refresh;
+    QProduct.Next;
+  end;
 end;
 
 procedure TFListProduct.BitBtn1Click(Sender: TObject);
 begin
-FListProduct.close;
+  FListProduct.close;
 end;
 
 end.

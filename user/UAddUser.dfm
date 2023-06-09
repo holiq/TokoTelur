@@ -9,9 +9,7 @@ object FAddUser: TFAddUser
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 160
@@ -83,7 +81,7 @@ object FAddUser: TFAddUser
     TabOrder = 3
     Items.Strings = (
       'owner'
-      'admin')
+      'kasir')
   end
   object BitBtn1: TBitBtn
     Left = 206
