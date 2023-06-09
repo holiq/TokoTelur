@@ -8,7 +8,7 @@ uses
   Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, Math;
 
 type
   TFListTransaction = class(TForm)
@@ -30,26 +30,35 @@ type
     Label4: TLabel;
     Label1: TLabel;
     Edit1: TEdit;
-    QTransactionid: TFDAutoIncField;
+    QProduct: TFDQuery;
+    QTransactionid: TLargeintField;
     QTransactionfull_name: TStringField;
     QTransactionproduct_name: TStringField;
     QTransactionquantity: TIntegerField;
     QTransactionprice_kg: TIntegerField;
     QTransactiontotal_price: TIntegerField;
     QTransactiontype: TStringField;
-    QTransactioncreated_at: TDateTimeField;
-    QTransactionupdated_at: TDateTimeField;
-    QProduct: TFDQuery;
-    QProductid: TFDAutoIncField;
+    QTransactioncreated_at: TSQLTimeStampField;
+    QTransactionupdated_at: TSQLTimeStampField;
+    QProductid: TLargeintField;
     QProductname: TStringField;
     QProductstock_kg: TIntegerField;
+    Panel4: TPanel;
+    BtnNext: TBitBtn;
+    BtnPrevious: TBitBtn;
+    Splitter5: TSplitter;
     procedure BitBtn5Click(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure BtnNextClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BtnPreviousClick(Sender: TObject);
   private
     { Private declarations }
+    procedure Pagination(PageNumber: Integer);
   public
     { Public declarations }
   end;
@@ -57,7 +66,8 @@ type
 var
   FListTransaction: TFListTransaction;
   transaction_type: string;
-  stock_product, current_stcok: Integer;
+  stock_product, current_stcok,
+    TotalPages, RowCount, RecordsPerPage, PageNumber: Integer;
 
 implementation
 
@@ -65,12 +75,80 @@ implementation
 
 uses UDataModule, UPenjualan, URestock;
 
+procedure TFListTransaction.Pagination(PageNumber: Integer);
+begin
+  RecordsPerPage:= 10;
+
+  QTransaction.MacroByName('WHERE').Value:= ' LIMIT '+
+    IntToStr(RecordsPerPage)+' OFFSET '+
+    IntToStr((PageNumber - 1) * RecordsPerPage);
+  QTransaction.Open;
+  while not QTransaction.Eof do
+  begin
+    QTransaction.Refresh;
+    QTransaction.Next;
+  end;
+end;
+
+procedure TFListTransaction.BtnNextClick(Sender: TObject);
+begin
+  if PageNumber < TotalPages then
+    PageNumber:= PageNumber+1;
+
+  Pagination(PageNumber);
+end;
+
+procedure TFListTransaction.BtnPreviousClick(Sender: TObject);
+begin
+  if not PageNumber = 1 then
+    PageNumber:= PageNumber-1
+  else
+    PageNumber:= 1;
+
+  Pagination(PageNumber);
+end;
+
+procedure TFListTransaction.FormCreate(Sender: TObject);
+begin
+  PageNumber := 1;
+
+  Pagination(PageNumber);
+
+  with DataModule.QTemp do
+  begin
+    SQL.Clear;
+    SQL.Text:= 'SELECT COUNT(id) AS total FROM transactions';
+    Open;
+    First;
+
+    RowCount := 0;
+    while not Eof do
+    begin
+      Inc(RowCount);
+      Next;
+    end;
+    TotalPages:= Ceil(FieldByName('total').AsInteger/10);
+  end;
+end;
+
 procedure TFListTransaction.BtnRefreshClick(Sender: TObject);
 begin
   if QTransaction.Active then
     QTransaction.Refresh
   else
     QTransaction.Open;
+end;
+
+procedure TFListTransaction.Edit1Change(Sender: TObject);
+begin
+  QTransaction.MacroByName('WHERE').Value:= ' WHERE users.full_name LIKE '+
+    QuotedStr('%'+Edit1.Text+'%')+' OR products.name LIKE '+QuotedStr('%'+Edit1.Text+'%');
+  QTransaction.Open;
+  while not QTransaction.Eof do
+  begin
+    QTransaction.Refresh;
+    QTransaction.Next;
+  end;
 end;
 
 procedure TFListTransaction.BitBtn2Click(Sender: TObject);

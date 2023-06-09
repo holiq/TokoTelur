@@ -2,27 +2,27 @@ object FListTransaction: TFListTransaction
   Left = 0
   Top = 0
   Caption = 'FListTransaction'
-  ClientHeight = 311
-  ClientWidth = 547
+  ClientHeight = 470
+  ClientWidth = 785
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
-  PixelsPerInch = 96
+  OnCreate = FormCreate
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 547
+    Width = 785
     Height = 35
     Align = alTop
     Color = clAppWorkSpace
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 775
     object Splitter4: TSplitter
       Left = 157
       Top = 1
@@ -95,10 +95,11 @@ object FListTransaction: TFListTransaction
   object Panel2: TPanel
     Left = 0
     Top = 35
-    Width = 547
+    Width = 785
     Height = 30
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 775
     object Label4: TLabel
       Left = 226
       Top = 6
@@ -129,17 +130,20 @@ object FListTransaction: TFListTransaction
       Width = 121
       Height = 21
       TabOrder = 0
+      OnChange = Edit1Change
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 272
-    Width = 547
+    Top = 431
+    Width = 785
     Height = 39
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 413
+    ExplicitWidth = 775
     object BitBtn5: TBitBtn
-      Left = 471
+      Left = 709
       Top = 1
       Width = 75
       Height = 37
@@ -147,13 +151,14 @@ object FListTransaction: TFListTransaction
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn5Click
+      ExplicitLeft = 699
     end
   end
   object DBGrid1: TDBGrid
     Left = 0
     Top = 65
-    Width = 547
-    Height = 207
+    Width = 785
+    Height = 325
     Align = alClient
     BiDiMode = bdLeftToRight
     DataSource = DataSource1
@@ -211,6 +216,46 @@ object FListTransaction: TFListTransaction
         Visible = True
       end>
   end
+  object Panel4: TPanel
+    Left = 0
+    Top = 390
+    Width = 785
+    Height = 41
+    Align = alBottom
+    TabOrder = 4
+    ExplicitTop = 372
+    ExplicitWidth = 775
+    object Splitter5: TSplitter
+      Left = 706
+      Top = 1
+      Height = 39
+      Align = alRight
+      ExplicitLeft = 700
+      ExplicitTop = -3
+    end
+    object BtnNext: TBitBtn
+      Left = 709
+      Top = 1
+      Width = 75
+      Height = 39
+      Align = alRight
+      Caption = 'NEXT'
+      TabOrder = 0
+      OnClick = BtnNextClick
+      ExplicitLeft = 699
+    end
+    object BtnPrevious: TBitBtn
+      Left = 631
+      Top = 1
+      Width = 75
+      Height = 39
+      Align = alRight
+      Caption = 'PREVIOUS'
+      TabOrder = 1
+      OnClick = BtnPreviousClick
+      ExplicitLeft = 621
+    end
+  end
   object QTransaction: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
@@ -220,20 +265,25 @@ object FListTransaction: TFListTransaction
         '.type, transactions.created_at, transactions.updated_at FROM tra' +
         'nsactions INNER JOIN users ON transactions.user_id = users.id IN' +
         'NER JOIN products ON transactions.product_id = products.id'
-      '&WHERE')
+      '&WHERE'
+      '&LIMIT')
     Left = 192
     Top = 160
     MacroData = <
       item
         Value = Null
         Name = 'WHERE'
+      end
+      item
+        Value = Null
+        Name = 'LIMIT'
         DataType = mdIdentifier
       end>
-    object QTransactionid: TFDAutoIncField
+    object QTransactionid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object QTransactionfull_name: TStringField
       AutoGenerateValue = arDefault
@@ -272,12 +322,12 @@ object FListTransaction: TFListTransaction
       Required = True
       Size = 255
     end
-    object QTransactioncreated_at: TDateTimeField
+    object QTransactioncreated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'created_at'
       Origin = 'created_at'
     end
-    object QTransactionupdated_at: TDateTimeField
+    object QTransactionupdated_at: TSQLTimeStampField
       AutoGenerateValue = arDefault
       FieldName = 'updated_at'
       Origin = 'updated_at'
@@ -294,11 +344,11 @@ object FListTransaction: TFListTransaction
       'SELECT id, name, stock_kg FROM products')
     Left = 104
     Top = 160
-    object QProductid: TFDAutoIncField
+    object QProductid: TLargeintField
+      AutoGenerateValue = arAutoInc
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object QProductname: TStringField
       FieldName = 'name'
