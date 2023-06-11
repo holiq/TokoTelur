@@ -2,8 +2,8 @@ object Fpenjualan: TFpenjualan
   Left = 0
   Top = 0
   Caption = 'FPenjualan'
-  ClientHeight = 367
-  ClientWidth = 563
+  ClientHeight = 372
+  ClientWidth = 568
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -107,8 +107,8 @@ object Fpenjualan: TFpenjualan
     Connection = DataModule.FDConnection1
     SQL.Strings = (
       'SELECT id, name, stock_kg, price_kg FROM products')
-    Left = 56
-    Top = 88
+    Left = 80
+    Top = 152
     object QProductid: TLargeintField
       AutoGenerateValue = arAutoInc
       FieldName = 'id'

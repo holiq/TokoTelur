@@ -2,8 +2,8 @@ object FRestock: TFRestock
   Left = 0
   Top = 0
   Caption = 'FRestock'
-  ClientHeight = 458
-  ClientWidth = 586
+  ClientHeight = 372
+  ClientWidth = 568
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,28 +15,28 @@ object FRestock: TFRestock
   TextHeight = 13
   object Label1: TLabel
     Left = 160
-    Top = 98
+    Top = 54
     Width = 48
     Height = 13
     Caption = 'PRODUCT'
   end
   object Label2: TLabel
     Left = 160
-    Top = 154
+    Top = 110
     Width = 51
     Height = 13
     Caption = 'QUANTITY'
   end
   object Label3: TLabel
     Left = 160
-    Top = 218
+    Top = 174
     Width = 47
     Height = 13
     Caption = 'PRICE/KG'
   end
   object Label4: TLabel
     Left = 160
-    Top = 282
+    Top = 238
     Width = 65
     Height = 13
     Caption = 'TOTAL PRICE'
@@ -56,14 +56,14 @@ object FRestock: TFRestock
   end
   object EditQty: TEdit
     Left = 160
-    Top = 173
+    Top = 129
     Width = 257
     Height = 21
     TabOrder = 0
   end
   object BitBtn1: TBitBtn
-    Left = 206
-    Top = 416
+    Left = 202
+    Top = 313
     Width = 75
     Height = 25
     Caption = 'SAVE'
@@ -72,7 +72,7 @@ object FRestock: TFRestock
   end
   object EditPrice: TEdit
     Left = 160
-    Top = 237
+    Top = 193
     Width = 257
     Height = 21
     TabOrder = 2
@@ -80,15 +80,15 @@ object FRestock: TFRestock
   end
   object EditTotal: TEdit
     Left = 160
-    Top = 301
+    Top = 257
     Width = 257
     Height = 21
     TabOrder = 3
     OnChange = EditTotalChange
   end
   object BitBtn2: TBitBtn
-    Left = 303
-    Top = 416
+    Left = 299
+    Top = 313
     Width = 75
     Height = 25
     Caption = 'CLOSE'
@@ -97,7 +97,7 @@ object FRestock: TFRestock
   end
   object ComboBox1: TComboBox
     Left = 160
-    Top = 117
+    Top = 73
     Width = 218
     Height = 21
     TabOrder = 5

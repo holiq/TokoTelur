@@ -7,7 +7,7 @@ interface
 
 function getmd5(SourceString: string): string;
 function dateNow(): string;
-procedure update(TableName: string; DataColumn: TArray<string>);
+function SnakeCase(const InputString: string): string;
 
 var
   username, password, role, id_user, fullName: string;
@@ -16,6 +16,20 @@ var
   formatDate, query: string;
 
 implementation
+
+function SnakeCase(const InputString: string): string;
+var
+  i: Integer;
+begin
+  Result := '';
+  for i := 1 to Length(InputString) do
+  begin
+    if InputString[i] = ' ' then
+      Result := Result + '_'
+    else
+      Result := Result + LowerCase(InputString[i]);
+  end;
+end;
 
 (* function read html5*)
 function getmd5(SourceString: string): string;
@@ -29,22 +43,6 @@ begin
   finally
     FreeAndNil(md5);
   end;
-end;
-
-procedure update(TableName: string; DataColumn: TArray<string>);
-begin
-//  with DataModule.QTemp do
-//  begin
-//    Close;
-//    SQL.Clear;
-//    SQL.Text:= 'UPDATE toko_telur.products SET '+
-//      'name='+QuotedStr(EditName.Text)+', '+
-//      'stock_kg='+QuotedStr(EditStock.Text)+', '+
-//      'price_kg='+QuotedStr(EditPrice.Text)+', '+
-//      'updated_at='+QuotedStr(dateNow)+' '+
-//      'WHERE products.id='+QuotedStr(LID.Caption);
-//    Execute;
-//  end;
 end;
 
 function dateNow(): string;

@@ -13,8 +13,8 @@ object FReport: TFReport
   TextHeight = 13
   object Splitter4: TSplitter
     Left = 365
-    Top = 33
-    Height = 300
+    Top = 63
+    Height = 270
     ExplicitLeft = 257
     ExplicitTop = 1
     ExplicitHeight = 282
@@ -54,6 +54,14 @@ object FReport: TFReport
       ExplicitTop = 24
       ExplicitHeight = 100
     end
+    object Splitter6: TSplitter
+      Left = 313
+      Top = 1
+      Height = 31
+      ExplicitLeft = 336
+      ExplicitTop = 16
+      ExplicitHeight = 100
+    end
     object BitBtn1: TBitBtn
       Left = 4
       Top = 1
@@ -72,6 +80,7 @@ object FReport: TFReport
       Align = alLeft
       Caption = 'MINGGUAN'
       TabOrder = 1
+      OnClick = BitBtn2Click
     end
     object BitBtn3: TBitBtn
       Left = 160
@@ -81,6 +90,7 @@ object FReport: TFReport
       Align = alLeft
       Caption = 'BULANAN'
       TabOrder = 2
+      OnClick = BitBtn3Click
     end
     object BitBtn4: TBitBtn
       Left = 238
@@ -90,17 +100,28 @@ object FReport: TFReport
       Align = alLeft
       Caption = 'TAHUNAN'
       TabOrder = 3
+      OnClick = BitBtn4Click
+    end
+    object BitBtn5: TBitBtn
+      Left = 316
+      Top = 1
+      Width = 75
+      Height = 31
+      Align = alLeft
+      Caption = 'KESELURUHAN'
+      TabOrder = 4
+      OnClick = BitBtn5Click
     end
   end
   object SplitView1: TSplitView
     Left = 0
-    Top = 33
+    Top = 63
     Width = 365
-    Height = 300
+    Height = 270
     OpenedWidth = 365
     Placement = svpLeft
     TabOrder = 1
-    ExplicitHeight = 282
+    ExplicitHeight = 252
     object Label1: TLabel
       AlignWithMargins = True
       Left = 3
@@ -122,21 +143,21 @@ object FReport: TFReport
       Left = 0
       Top = 25
       Width = 365
-      Height = 275
+      Height = 245
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 257
+      ExplicitHeight = 227
     end
   end
   object SplitView2: TSplitView
     Left = 368
-    Top = 33
+    Top = 63
     Width = 365
-    Height = 300
+    Height = 270
     OpenedWidth = 365
     Placement = svpLeft
     TabOrder = 2
-    ExplicitHeight = 282
+    ExplicitHeight = 252
     object Label2: TLabel
       AlignWithMargins = True
       Left = 3
@@ -158,28 +179,61 @@ object FReport: TFReport
       Left = 0
       Top = 25
       Width = 365
-      Height = 275
+      Height = 245
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 257
+      ExplicitHeight = 227
     end
   end
-  object QPenjualan: TFDQuery
+  object Panel2: TPanel
+    Left = 0
+    Top = 33
+    Width = 734
+    Height = 30
+    Align = alTop
+    TabOrder = 3
+    ExplicitWidth = 724
+    object Label3: TLabel
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 31
+      Height = 22
+      Align = alLeft
+      Caption = 'Filter: '
+      Layout = tlCenter
+      ExplicitHeight = 13
+    end
+    object Splitter7: TSplitter
+      Left = 38
+      Top = 1
+      Height = 28
+      ExplicitLeft = 41
+      ExplicitTop = 6
+    end
+    object ComboBox1: TComboBox
+      AlignWithMargins = True
+      Left = 44
+      Top = 4
+      Width = 145
+      Height = 21
+      Align = alLeft
+      TabOrder = 0
+      Text = 'Semua'
+    end
+  end
+  object QTransaction: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
-      
-        'SELECT transactions.id, name AS product_name, quantity, transact' +
-        'ions.price_kg, transactions.total_price, transactions.type, tran' +
-        'sactions.created_at, transactions.updated_at FROM transactions I' +
-        'NNER JOIN users ON transactions.user_id = users.id INNER JOIN pr' +
-        'oducts ON transactions.product_id = products.id WHERE transactio' +
-        'ns.type='#39'penjualan'#39' ORDER BY transactions.id DESC')
-    Left = 152
-    Top = 209
-  end
-  object QRestock: TFDQuery
-    Connection = DataModule.FDConnection1
-    Left = 521
-    Top = 217
+      'SELECT * FROM transactions'
+      '&WHERE')
+    Left = 280
+    Top = 215
+    MacroData = <
+      item
+        Value = Null
+        Name = 'WHERE'
+        DataType = mdIdentifier
+      end>
   end
 end
