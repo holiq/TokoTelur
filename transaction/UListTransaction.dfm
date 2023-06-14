@@ -3,7 +3,7 @@ object FListTransaction: TFListTransaction
   Top = 0
   Caption = 'FListTransaction'
   ClientHeight = 470
-  ClientWidth = 785
+  ClientWidth = 743
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object FListTransaction: TFListTransaction
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 785
+    Width = 743
     Height = 35
     Align = alTop
     Color = clAppWorkSpace
@@ -95,55 +95,81 @@ object FListTransaction: TFListTransaction
   object Panel2: TPanel
     Left = 0
     Top = 35
-    Width = 785
+    Width = 743
     Height = 30
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 775
-    object Label4: TLabel
-      Left = 226
-      Top = 6
-      Width = 115
-      Height = 18
-      Caption = 'List Transaction'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Georgia'
-      Font.Style = []
-      ParentFont = False
-    end
+    ExplicitWidth = 785
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
       Top = 4
-      Width = 44
+      Width = 48
       Height = 22
       Align = alLeft
       Caption = 'SEARCH:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       Layout = tlCenter
-      ExplicitHeight = 13
+      ExplicitHeight = 14
+    end
+    object Label3: TLabel
+      AlignWithMargins = True
+      Left = 185
+      Top = 4
+      Width = 48
+      Height = 22
+      Align = alLeft
+      Caption = 'FILTER: '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Layout = tlCenter
+      ExplicitLeft = 181
     end
     object Edit1: TEdit
-      Left = 54
-      Top = 6
+      AlignWithMargins = True
+      Left = 58
+      Top = 4
       Width = 121
-      Height = 21
+      Height = 22
+      Align = alLeft
       TabOrder = 0
       OnChange = Edit1Change
+      ExplicitLeft = 54
+      ExplicitTop = 6
+      ExplicitHeight = 21
+    end
+    object ComboBox1: TComboBox
+      AlignWithMargins = True
+      Left = 239
+      Top = 4
+      Width = 137
+      Height = 21
+      Align = alLeft
+      TabOrder = 1
+      OnChange = ComboBox1Change
+      ExplicitLeft = 240
     end
   end
   object Panel3: TPanel
     Left = 0
     Top = 431
-    Width = 785
+    Width = 743
     Height = 39
     Align = alBottom
     TabOrder = 2
     ExplicitTop = 413
     ExplicitWidth = 775
     object BitBtn5: TBitBtn
-      Left = 709
+      Left = 667
       Top = 1
       Width = 75
       Height = 37
@@ -156,9 +182,9 @@ object FListTransaction: TFListTransaction
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 65
-    Width = 785
-    Height = 325
+    Top = 99
+    Width = 743
+    Height = 291
     Align = alClient
     BiDiMode = bdLeftToRight
     DataSource = DataSource1
@@ -173,60 +199,73 @@ object FListTransaction: TFListTransaction
       item
         Expanded = False
         FieldName = 'id'
+        Title.Caption = 'ID'
+        Width = 50
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'full_name'
+        Title.Caption = 'Nama'
+        Width = 110
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'product_name'
+        Title.Caption = 'Produk'
+        Width = 90
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'quantity'
+        Title.Caption = 'Jumlah'
+        Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'price_kg'
+        Title.Caption = 'Harga/kg'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'total_price'
+        Title.Caption = 'Total  Harga'
+        Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'type'
+        Title.Caption = 'Tipe'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'created_at'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'updated_at'
+        Title.Caption = 'Tanggal'
+        Width = 150
         Visible = True
       end>
   end
   object Panel4: TPanel
     Left = 0
     Top = 390
-    Width = 785
+    Width = 743
     Height = 41
     Align = alBottom
+    Color = clCream
+    ParentBackground = False
     TabOrder = 4
     ExplicitTop = 372
     ExplicitWidth = 775
     object Splitter5: TSplitter
-      Left = 706
+      Left = 664
       Top = 1
       Height = 39
       Align = alRight
@@ -234,7 +273,7 @@ object FListTransaction: TFListTransaction
       ExplicitTop = -3
     end
     object BtnNext: TBitBtn
-      Left = 709
+      Left = 667
       Top = 1
       Width = 75
       Height = 39
@@ -245,7 +284,7 @@ object FListTransaction: TFListTransaction
       ExplicitLeft = 699
     end
     object BtnPrevious: TBitBtn
-      Left = 631
+      Left = 589
       Top = 1
       Width = 75
       Height = 39
@@ -254,6 +293,36 @@ object FListTransaction: TFListTransaction
       TabOrder = 1
       OnClick = BtnPreviousClick
       ExplicitLeft = 621
+    end
+  end
+  object Panel5: TPanel
+    Left = 0
+    Top = 65
+    Width = 743
+    Height = 34
+    Align = alTop
+    TabOrder = 5
+    ExplicitTop = 43
+    ExplicitWidth = 785
+    object Label2: TLabel
+      Left = 1
+      Top = 1
+      Width = 741
+      Height = 32
+      Align = alClient
+      Alignment = taCenter
+      Caption = 'List Transaction'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Georgia'
+      Font.Style = []
+      ParentFont = False
+      Layout = tlCenter
+      ExplicitLeft = 314
+      ExplicitTop = 6
+      ExplicitWidth = 115
+      ExplicitHeight = 18
     end
   end
   object QTransaction: TFDQuery
@@ -265,19 +334,13 @@ object FListTransaction: TFListTransaction
         '.type, transactions.created_at, transactions.updated_at FROM tra' +
         'nsactions INNER JOIN users ON transactions.user_id = users.id IN' +
         'NER JOIN products ON transactions.product_id = products.id'
-      '&WHERE'
-      '&LIMIT')
+      '&WHERELIMIT')
     Left = 192
     Top = 160
     MacroData = <
       item
         Value = Null
-        Name = 'WHERE'
-      end
-      item
-        Value = Null
-        Name = 'LIMIT'
-        DataType = mdIdentifier
+        Name = 'WHERELIMIT'
       end>
     object QTransactionid: TLargeintField
       AutoGenerateValue = arAutoInc

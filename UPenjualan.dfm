@@ -14,28 +14,35 @@ object Fpenjualan: TFpenjualan
   OnCreate = FormCreate
   TextHeight = 13
   object Label1: TLabel
-    Left = 160
-    Top = 53
+    Left = 166
+    Top = 54
     Width = 48
     Height = 13
     Caption = 'PRODUCT'
   end
   object Label2: TLabel
-    Left = 160
-    Top = 109
+    Left = 166
+    Top = 110
     Width = 51
     Height = 13
     Caption = 'QUANTITY'
   end
   object Label3: TLabel
-    Left = 160
-    Top = 173
+    Left = 166
+    Top = 174
     Width = 47
     Height = 13
     Caption = 'PRICE/KG'
   end
   object Label4: TLabel
-    Left = 248
+    Left = 166
+    Top = 238
+    Width = 65
+    Height = 13
+    Caption = 'TOTAL PRICE'
+  end
+  object Label5: TLabel
+    Left = 256
     Top = 16
     Width = 69
     Height = 18
@@ -47,24 +54,17 @@ object Fpenjualan: TFpenjualan
     Font.Style = []
     ParentFont = False
   end
-  object Label5: TLabel
-    Left = 160
-    Top = 223
-    Width = 65
-    Height = 13
-    Caption = 'TOTAL PRICE'
-  end
   object EditQty: TEdit
-    Left = 160
-    Top = 128
+    Left = 166
+    Top = 129
     Width = 257
     Height = 21
     TabOrder = 0
     OnChange = EditQtyChange
   end
   object BitBtn1: TBitBtn
-    Left = 214
-    Top = 304
+    Left = 206
+    Top = 313
     Width = 75
     Height = 25
     Caption = 'SAVE'
@@ -72,36 +72,35 @@ object Fpenjualan: TFpenjualan
     OnClick = BitBtn1Click
   end
   object EditPrice: TEdit
-    Left = 160
-    Top = 192
+    Left = 166
+    Top = 193
     Width = 257
     Height = 21
     TabOrder = 2
   end
+  object EditTotal: TEdit
+    Left = 166
+    Top = 257
+    Width = 257
+    Height = 21
+    TabOrder = 3
+  end
   object BitBtn2: TBitBtn
-    Left = 295
-    Top = 304
+    Left = 303
+    Top = 313
     Width = 75
     Height = 25
     Caption = 'CLOSE'
-    TabOrder = 3
+    TabOrder = 4
     OnClick = BitBtn2Click
   end
   object ComboBox1: TComboBox
-    Left = 160
-    Top = 72
-    Width = 210
+    Left = 166
+    Top = 73
+    Width = 218
     Height = 21
-    TabOrder = 4
-    OnChange = ComboBox1Change
-  end
-  object EditTotal: TEdit
-    Left = 160
-    Top = 242
-    Width = 257
-    Height = 21
-    ReadOnly = True
     TabOrder = 5
+    OnChange = ComboBox1Change
   end
   object QProduct: TFDQuery
     Connection = DataModule.FDConnection1

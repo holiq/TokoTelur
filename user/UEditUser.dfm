@@ -1,8 +1,8 @@
 object FEditUser: TFEditUser
   Left = 0
   Top = 0
-  ClientHeight = 401
-  ClientWidth = 550
+  ClientHeight = 392
+  ClientWidth = 570
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -40,8 +40,8 @@ object FEditUser: TFEditUser
     Caption = 'PASWORD'
   end
   object Label5: TLabel
-    Left = 232
-    Top = 24
+    Left = 236
+    Top = 31
     Width = 67
     Height = 18
     Caption = 'Edit User'
@@ -53,8 +53,8 @@ object FEditUser: TFEditUser
     ParentFont = False
   end
   object LID: TLabel
-    Left = 305
-    Top = 24
+    Left = 315
+    Top = 31
     Width = 18
     Height = 18
     Caption = 'ID'
@@ -97,8 +97,8 @@ object FEditUser: TFEditUser
       'kasir')
   end
   object BtnUpdate: TBitBtn
-    Left = 190
-    Top = 339
+    Left = 259
+    Top = 328
     Width = 75
     Height = 25
     Caption = 'UPDATE'
@@ -106,8 +106,8 @@ object FEditUser: TFEditUser
     OnClick = BtnUpdateClick
   end
   object BtnClose: TBitBtn
-    Left = 271
-    Top = 339
+    Left = 340
+    Top = 328
     Width = 75
     Height = 25
     Caption = 'CLOSE'

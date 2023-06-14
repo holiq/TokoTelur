@@ -2,8 +2,8 @@ object FListUser: TFListUser
   Left = 0
   Top = 0
   Caption = 'DataModule.FDConnection1'
-  ClientHeight = 411
-  ClientWidth = 634
+  ClientHeight = 392
+  ClientWidth = 570
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object FListUser: TFListUser
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 634
+    Width = 570
     Height = 35
     Align = alTop
     Color = clActiveBorder
@@ -97,7 +97,7 @@ object FListUser: TFListUser
   object Panel2: TPanel
     Left = 0
     Top = 35
-    Width = 634
+    Width = 570
     Height = 35
     Align = alTop
     TabOrder = 1
@@ -114,8 +114,8 @@ object FListUser: TFListUser
       ExplicitHeight = 13
     end
     object Label4: TLabel
-      Left = 258
-      Top = 8
+      Left = 248
+      Top = 6
       Width = 65
       Height = 18
       Caption = 'List User'
@@ -136,15 +136,15 @@ object FListUser: TFListUser
   end
   object Panel3: TPanel
     Left = 0
-    Top = 376
-    Width = 634
+    Top = 357
+    Width = 570
     Height = 35
     Align = alBottom
     TabOrder = 2
     ExplicitTop = 358
     ExplicitWidth = 624
     object BitBtn5: TBitBtn
-      Left = 558
+      Left = 494
       Top = 1
       Width = 75
       Height = 33
@@ -158,8 +158,8 @@ object FListUser: TFListUser
   object DBGrid1: TDBGrid
     Left = 0
     Top = 70
-    Width = 634
-    Height = 306
+    Width = 570
+    Height = 287
     Align = alClient
     DataSource = DataSource1
     TabOrder = 3
@@ -172,36 +172,36 @@ object FListUser: TFListUser
       item
         Expanded = False
         FieldName = 'id'
+        Title.Caption = 'ID'
+        Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'full_name'
+        Title.Caption = 'Nama'
+        Width = 120
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'username'
+        Title.Caption = 'Username'
+        Width = 120
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'role'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'password'
+        Title.Caption = 'Role'
+        Width = 100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'created_at'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'updated_at'
+        Title.Caption = 'Tanggal'
+        Width = 150
         Visible = True
       end>
   end
@@ -216,7 +216,6 @@ object FListUser: TFListUser
       item
         Value = Null
         Name = 'WHERE'
-        DataType = mdIdentifier
       end>
     object QUserid: TLargeintField
       AutoGenerateValue = arAutoInc

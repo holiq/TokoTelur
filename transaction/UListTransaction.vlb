@@ -1,9 +1,6 @@
 ﻿[QProduct]
 Coordinates=112,10,69,124
 
-[Label4]
-Coordinates=412,10,53,58
-
 [Panel3]
 Coordinates=347,10,55,58
 
@@ -59,6 +56,6 @@ Coordinates=191,10,56,58
 Coordinates=332,276,56,58
 
 []
-Coordinates=99,467,79,36
+Coordinates=412,10,53,58
 Visible=True
 

@@ -41,6 +41,7 @@ type
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnDeleteClick(Sender: TObject);
     procedure EditSearchChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,7 +102,7 @@ end;
 
 procedure TFListProduct.EditSearchChange(Sender: TObject);
 begin
-  QProduct.MacroByName('WHERE').Value:= ' WHERE name LIKE '+
+   QProduct.MacroByName('WHERE').Value:= ' WHERE products.name LIKE '+
     QuotedStr('%'+EditSearch.Text+'%');
   QProduct.Open;
   while not QProduct.Eof do
@@ -109,6 +110,11 @@ begin
     QProduct.Refresh;
     QProduct.Next;
   end;
+end;
+
+procedure TFListProduct.FormShow(Sender: TObject);
+begin
+  BtnRefresh.Click;
 end;
 
 procedure TFListProduct.BitBtn1Click(Sender: TObject);

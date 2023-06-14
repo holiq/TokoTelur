@@ -41,6 +41,7 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
   private
     { Private declarations }
     procedure getReportDaily(TypeTransaction: string; Memo: TMemo);
@@ -68,15 +69,15 @@ begin
   begin
     SQL.Clear;
     SQL.Text:= 'SELECT '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() THEN quantity ELSE 0 END) qty_today, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() THEN total_price ELSE 0 END) price_today, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -1 THEN quantity ELSE 0 END) qty_yesterday, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -1 THEN total_price ELSE 0 END) price_yesterday, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -2 THEN quantity ELSE 0 END) qty_two_days_ago, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -2 THEN total_price ELSE 0 END) price_two_days_ago,'+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -3 THEN quantity ELSE 0 END) qty_three_days_ago, '+
-      'SUM(CASE WHEN DATE(created_at) = CURDATE() -3 THEN total_price ELSE 0 END) price_three_days_ago '+
-      'FROM transactions WHERE TYPE='+QuotedStr(TypeTransaction);
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() THEN quantity ELSE 0 END) qty_today, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() THEN total_price ELSE 0 END) price_today, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -1 THEN quantity ELSE 0 END) qty_yesterday, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -1 THEN total_price ELSE 0 END) price_yesterday, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -2 THEN quantity ELSE 0 END) qty_two_days_ago, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -2 THEN total_price ELSE 0 END) price_two_days_ago,'+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -3 THEN quantity ELSE 0 END) qty_three_days_ago, '+
+      'SUM(CASE WHEN DATE(transactions.created_at) = CURDATE() -3 THEN total_price ELSE 0 END) price_three_days_ago '+
+      'FROM transactions INNER JOIN products ON products.id=transactions.product_id WHERE TYPE='+QuotedStr(TypeTransaction)+WhereProduct;
     Open;
     while not Eof do
     begin
@@ -105,17 +106,17 @@ begin
   begin
     SQL.Clear;
     SQL.Text:= 'SELECT '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) THEN quantity ELSE 0 END) qty_this_week, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) THEN total_price ELSE 0 END) price_this_week, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_weeks, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_weeks, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_weeks_ago, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_weeks_ago,'+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -3 THEN quantity ELSE 0 END) qty_three_weeks_ago, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -3 THEN total_price ELSE 0 END) price_three_weeks_ago,'+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -4 THEN quantity ELSE 0 END) qty_four_weeks_ago, '+
-      'SUM(CASE WHEN YEARWEEK(created_at) = YEARWEEK(CURDATE()) -4 THEN total_price ELSE 0 END) price_four_weeks_ago '+
-      'FROM transactions WHERE TYPE='+QuotedStr(TypeTransaction);
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) THEN quantity ELSE 0 END) qty_this_week, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) THEN total_price ELSE 0 END) price_this_week, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_weeks, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_weeks, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_weeks_ago, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_weeks_ago,'+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -3 THEN quantity ELSE 0 END) qty_three_weeks_ago, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -3 THEN total_price ELSE 0 END) price_three_weeks_ago,'+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -4 THEN quantity ELSE 0 END) qty_four_weeks_ago, '+
+      'SUM(CASE WHEN YEARWEEK(transactions.created_at) = YEARWEEK(CURDATE()) -4 THEN total_price ELSE 0 END) price_four_weeks_ago '+
+      'FROM transactions INNER JOIN products ON products.id=transactions.product_id WHERE TYPE='+QuotedStr(TypeTransaction)+WhereProduct;
     Open;
     while not Eof do
     begin
@@ -147,17 +148,17 @@ begin
   begin
     SQL.Clear;
     SQL.Text:= 'SELECT '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) THEN quantity ELSE 0 END) qty_this_month, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) THEN total_price ELSE 0 END) price_this_month, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_months, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_months, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_months_ago, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_months_ago,'+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -3 THEN quantity ELSE 0 END) qty_three_months_ago, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -3 THEN total_price ELSE 0 END) price_three_months_ago,'+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -4 THEN quantity ELSE 0 END) qty_four_months_ago, '+
-      'SUM(CASE WHEN MONTH(created_at) = MONTH(CURDATE()) -4 THEN total_price ELSE 0 END) price_four_months_ago '+
-      'FROM transactions WHERE TYPE='+QuotedStr(TypeTransaction);
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) THEN quantity ELSE 0 END) qty_this_month, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) THEN total_price ELSE 0 END) price_this_month, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_months, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_months, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_months_ago, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_months_ago,'+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -3 THEN quantity ELSE 0 END) qty_three_months_ago, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -3 THEN total_price ELSE 0 END) price_three_months_ago,'+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -4 THEN quantity ELSE 0 END) qty_four_months_ago, '+
+      'SUM(CASE WHEN MONTH(transactions.created_at) = MONTH(CURDATE()) -4 THEN total_price ELSE 0 END) price_four_months_ago '+
+      'FROM transactions INNER JOIN products ON products.id=transactions.product_id WHERE TYPE='+QuotedStr(TypeTransaction)+WhereProduct;
     Open;
     while not Eof do
     begin
@@ -189,13 +190,13 @@ begin
   begin
     SQL.Clear;
     SQL.Text:= 'SELECT '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) THEN quantity ELSE 0 END) qty_this_year, '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) THEN total_price ELSE 0 END) price_this_year, '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_years, '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_years, '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_years_ago, '+
-      'SUM(CASE WHEN YEAR(created_at) = YEAR(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_years_ago '+
-      'FROM transactions WHERE TYPE='+QuotedStr(TypeTransaction);
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) THEN quantity ELSE 0 END) qty_this_year, '+
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) THEN total_price ELSE 0 END) price_this_year, '+
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) -1 THEN quantity ELSE 0 END) qty_last_years, '+
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) -1 THEN total_price ELSE 0 END) price_last_years, '+
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) -2 THEN quantity ELSE 0 END) qty_two_years_ago, '+
+      'SUM(CASE WHEN YEAR(transactions.created_at) = YEAR(CURDATE()) -2 THEN total_price ELSE 0 END) price_two_years_ago '+
+      'FROM transactions INNER JOIN products ON products.id=transactions.product_id WHERE TYPE='+QuotedStr(TypeTransaction)+WhereProduct;
     Open;
     while not Eof do
     begin
@@ -222,7 +223,7 @@ begin
     SQL.Clear;
     SQL.Text:= 'SELECT '+
       'SUM(quantity) AS qty_total,SUM(total_price) AS price_total '+
-      'FROM transactions WHERE TYPE='+QuotedStr(TypeTransaction);
+      'FROM transactions INNER JOIN products ON products.id=transactions.product_id WHERE TYPE='+QuotedStr(TypeTransaction)+WhereProduct;
     Open;
     while not Eof do
     begin
@@ -264,6 +265,14 @@ procedure TFReport.BitBtn5Click(Sender: TObject);
 begin
   getReportAll('penjualan', Memo1);
   getReportAll('restock', Memo2);
+end;
+
+procedure TFReport.ComboBox1Change(Sender: TObject);
+begin
+  if ComboBox1.Text<>'Semua' then
+    WhereProduct:= ' AND products.name='+QuotedStr(ComboBox1.Text)
+  else
+    WhereProduct:= '';
 end;
 
 procedure TFReport.FormCreate(Sender: TObject);

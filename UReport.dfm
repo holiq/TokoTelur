@@ -220,12 +220,16 @@ object FReport: TFReport
       Align = alLeft
       TabOrder = 0
       Text = 'Semua'
+      OnChange = ComboBox1Change
     end
   end
   object QTransaction: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
-      'SELECT * FROM transactions'
+      
+        'SELECT transactions.id, transactions.quantity, transactions.tota' +
+        'l_price, transactions.product_id, transactions.created_at FROM t' +
+        'ransactions'
       '&WHERE')
     Left = 280
     Top = 215

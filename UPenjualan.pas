@@ -7,26 +7,26 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.UITypes;
 
 type
   TFpenjualan = class(TForm)
-    EditQty: TEdit;
-    BitBtn1: TBitBtn;
-    Label1: TLabel;
-    Label2: TLabel;
-    EditPrice: TEdit;
-    Label3: TLabel;
-    BitBtn2: TBitBtn;
-    ComboBox1: TComboBox;
-    Label4: TLabel;
     QProduct: TFDQuery;
-    Label5: TLabel;
-    EditTotal: TEdit;
     QProductid: TLargeintField;
     QProductname: TStringField;
     QProductstock_kg: TIntegerField;
     QProductprice_kg: TIntegerField;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    EditQty: TEdit;
+    BitBtn1: TBitBtn;
+    EditPrice: TEdit;
+    EditTotal: TEdit;
+    BitBtn2: TBitBtn;
+    ComboBox1: TComboBox;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -98,7 +98,11 @@ end;
 
 procedure TFpenjualan.EditQtyChange(Sender: TObject);
 begin
-  EditTotal.Text:= IntToStr(price_product*StrToInt(EditQty.Text))
+  if (StrToIntDef(EditQty.Text, 0) > stock_product) AND (ComboBox1.Text<>'') then
+    MessageDlg('Stok tidak cukup', mtWarning, [Mbok], 0);
+    Exit;
+
+  EditTotal.Text:= IntToStr(price_product*StrToIntDef(EditQty.Text, 0))
 end;
 
 procedure TFpenjualan.FormCreate(Sender: TObject);

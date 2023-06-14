@@ -8,17 +8,17 @@ uses
 
 type
   TFAddUser = class(TForm)
-    EditName: TEdit;
-    EditUsername: TEdit;
-    EditPassword: TEdit;
-    ComboBoxRole: TComboBox;
-    BitBtn1: TBitBtn;
+    Label5: TLabel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    BitBtn2: TBitBtn;
-    Label5: TLabel;
+    EditName: TEdit;
+    EditUsername: TEdit;
+    EditPassword: TEdit;
+    ComboBoxRole: TComboBox;
+    BtnUpdate: TBitBtn;
+    BtnClose: TBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private

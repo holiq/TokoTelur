@@ -23,8 +23,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFMainMenu, FMainMenu);
-  Application.CreateForm(TFLogin, FLogin);
   Application.CreateForm(TDataModule, DataModule);
-  Application.CreateForm(TFReport, FReport);
   Application.Run;
 end.

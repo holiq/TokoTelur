@@ -14,28 +14,28 @@ object FRestock: TFRestock
   OnCreate = FormCreate
   TextHeight = 13
   object Label1: TLabel
-    Left = 160
+    Left = 166
     Top = 54
     Width = 48
     Height = 13
     Caption = 'PRODUCT'
   end
   object Label2: TLabel
-    Left = 160
+    Left = 166
     Top = 110
     Width = 51
     Height = 13
     Caption = 'QUANTITY'
   end
   object Label3: TLabel
-    Left = 160
+    Left = 166
     Top = 174
     Width = 47
     Height = 13
     Caption = 'PRICE/KG'
   end
   object Label4: TLabel
-    Left = 160
+    Left = 166
     Top = 238
     Width = 65
     Height = 13
@@ -55,14 +55,14 @@ object FRestock: TFRestock
     ParentFont = False
   end
   object EditQty: TEdit
-    Left = 160
+    Left = 166
     Top = 129
     Width = 257
     Height = 21
     TabOrder = 0
   end
   object BitBtn1: TBitBtn
-    Left = 202
+    Left = 206
     Top = 313
     Width = 75
     Height = 25
@@ -71,7 +71,7 @@ object FRestock: TFRestock
     OnClick = BitBtn1Click
   end
   object EditPrice: TEdit
-    Left = 160
+    Left = 166
     Top = 193
     Width = 257
     Height = 21
@@ -79,7 +79,7 @@ object FRestock: TFRestock
     OnChange = EditPriceChange
   end
   object EditTotal: TEdit
-    Left = 160
+    Left = 166
     Top = 257
     Width = 257
     Height = 21
@@ -87,7 +87,7 @@ object FRestock: TFRestock
     OnChange = EditTotalChange
   end
   object BitBtn2: TBitBtn
-    Left = 299
+    Left = 303
     Top = 313
     Width = 75
     Height = 25
@@ -96,7 +96,7 @@ object FRestock: TFRestock
     OnClick = BitBtn2Click
   end
   object ComboBox1: TComboBox
-    Left = 160
+    Left = 166
     Top = 73
     Width = 218
     Height = 21

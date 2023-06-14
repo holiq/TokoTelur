@@ -16,7 +16,7 @@ type
     Label3: TLabel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    Label4: TLabel;
+    Label5: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private

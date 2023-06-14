@@ -1,8 +1,8 @@
 object FAddUser: TFAddUser
   Left = 0
   Top = 0
-  ClientHeight = 413
-  ClientWidth = 575
+  ClientHeight = 392
+  ClientWidth = 570
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,37 +11,9 @@ object FAddUser: TFAddUser
   Font.Style = []
   Position = poDesktopCenter
   TextHeight = 13
-  object Label1: TLabel
-    Left = 160
-    Top = 106
-    Width = 28
-    Height = 13
-    Caption = 'NAME'
-  end
-  object Label2: TLabel
-    Left = 160
-    Top = 162
-    Width = 60
-    Height = 13
-    Caption = 'USSERNAME'
-  end
-  object Label3: TLabel
-    Left = 160
-    Top = 221
-    Width = 26
-    Height = 13
-    Caption = 'ROLE'
-  end
-  object Label4: TLabel
-    Left = 160
-    Top = 280
-    Width = 51
-    Height = 13
-    Caption = 'PASWORD'
-  end
   object Label5: TLabel
-    Left = 248
-    Top = 40
+    Left = 233
+    Top = 32
     Width = 103
     Height = 18
     Caption = 'Add New User'
@@ -52,30 +24,58 @@ object FAddUser: TFAddUser
     Font.Style = []
     ParentFont = False
   end
+  object Label1: TLabel
+    Left = 160
+    Top = 93
+    Width = 29
+    Height = 13
+    Caption = 'NAMA'
+  end
+  object Label2: TLabel
+    Left = 160
+    Top = 149
+    Width = 60
+    Height = 13
+    Caption = 'USSERNAME'
+  end
+  object Label3: TLabel
+    Left = 160
+    Top = 208
+    Width = 26
+    Height = 13
+    Caption = 'ROLE'
+  end
+  object Label4: TLabel
+    Left = 160
+    Top = 267
+    Width = 51
+    Height = 13
+    Caption = 'PASWORD'
+  end
   object EditName: TEdit
     Left = 160
-    Top = 125
+    Top = 112
     Width = 257
     Height = 21
     TabOrder = 0
   end
   object EditUsername: TEdit
     Left = 160
-    Top = 181
+    Top = 168
     Width = 257
     Height = 21
     TabOrder = 1
   end
   object EditPassword: TEdit
     Left = 160
-    Top = 299
+    Top = 286
     Width = 169
     Height = 21
     TabOrder = 2
   end
   object ComboBoxRole: TComboBox
     Left = 160
-    Top = 240
+    Top = 227
     Width = 145
     Height = 21
     TabOrder = 3
@@ -83,22 +83,20 @@ object FAddUser: TFAddUser
       'owner'
       'kasir')
   end
-  object BitBtn1: TBitBtn
-    Left = 206
-    Top = 360
+  object BtnUpdate: TBitBtn
+    Left = 259
+    Top = 328
     Width = 75
     Height = 25
     Caption = 'SAVE'
     TabOrder = 4
-    OnClick = BitBtn1Click
   end
-  object BitBtn2: TBitBtn
-    Left = 287
-    Top = 360
+  object BtnClose: TBitBtn
+    Left = 340
+    Top = 328
     Width = 75
     Height = 25
     Caption = 'CLOSE'
     TabOrder = 5
-    OnClick = BitBtn2Click
   end
 end

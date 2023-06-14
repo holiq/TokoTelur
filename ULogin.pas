@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, System.UITypes;
 
 type
   TFLogin = class(TForm)
@@ -50,6 +50,17 @@ begin
     role:= DataModule.QTemp.FieldByName('role').AsString;
     fullName:= DataModule.QTemp.FieldByName('full_name').AsString;
     id_user:= DataModule.QTemp.FieldByName('id').AsString;
+    if role<>'owner' then
+    begin
+      with FMainMenu do
+      begin
+        MainMenu1.Items.Delete(1);
+        MainMenu1.Items.Delete(3);
+
+
+        //ShowMessage(MainMenu1.Item);
+      end;
+    end;
     FLogin.Close;
   end
   else

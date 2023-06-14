@@ -1,8 +1,8 @@
 object FListProduct: TFListProduct
   Left = 0
   Top = 0
-  ClientHeight = 411
-  ClientWidth = 634
+  ClientHeight = 392
+  ClientWidth = 570
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -10,18 +10,19 @@ object FListProduct: TFListProduct
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poDesktopCenter
+  OnShow = FormShow
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 376
-    Width = 634
+    Top = 357
+    Width = 570
     Height = 35
     Align = alBottom
     TabOrder = 1
     ExplicitTop = 358
     ExplicitWidth = 624
     object BitBtn1: TBitBtn
-      Left = 561
+      Left = 497
       Top = 1
       Width = 72
       Height = 33
@@ -35,13 +36,13 @@ object FListProduct: TFListProduct
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 634
+    Width = 570
     Height = 35
     Align = alTop
     Color = clAppWorkSpace
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 624
+    ExplicitWidth = 588
     object Splitter1: TSplitter
       Left = 79
       Top = 1
@@ -117,8 +118,8 @@ object FListProduct: TFListProduct
   object DBGrid1: TDBGrid
     Left = 0
     Top = 70
-    Width = 634
-    Height = 306
+    Width = 570
+    Height = 287
     Align = alClient
     DataSource = DataSource1
     TabOrder = 2
@@ -131,38 +132,43 @@ object FListProduct: TFListProduct
       item
         Expanded = False
         FieldName = 'id'
+        Title.Caption = 'ID'
+        Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'name'
+        Title.Caption = 'Nama'
+        Width = 130
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'stock_kg'
+        Title.Caption = 'Stok/kg'
+        Width = 90
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'price_kg'
+        Title.Caption = 'Harga'
+        Width = 110
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'created_at'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'updated_at'
+        Title.Caption = 'Tanggal'
+        Width = 160
         Visible = True
       end>
   end
   object Panel4: TPanel
     Left = 0
     Top = 35
-    Width = 634
+    Width = 570
     Height = 35
     Align = alTop
     TabOrder = 3
@@ -179,8 +185,8 @@ object FListProduct: TFListProduct
       ExplicitHeight = 13
     end
     object Label4: TLabel
-      Left = 258
-      Top = 11
+      Left = 250
+      Top = 6
       Width = 87
       Height = 18
       Caption = 'List Product'
@@ -212,7 +218,6 @@ object FListProduct: TFListProduct
       item
         Value = Null
         Name = 'WHERE'
-        DataType = mdIdentifier
       end>
     object QProductid: TLargeintField
       AutoGenerateValue = arAutoInc
