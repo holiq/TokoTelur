@@ -2,7 +2,7 @@ object FListProduct: TFListProduct
   Left = 0
   Top = 0
   ClientHeight = 392
-  ClientWidth = 570
+  ClientWidth = 586
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,14 +15,14 @@ object FListProduct: TFListProduct
   object Panel2: TPanel
     Left = 0
     Top = 357
-    Width = 570
+    Width = 586
     Height = 35
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 358
-    ExplicitWidth = 624
+    ExplicitTop = 337
+    ExplicitWidth = 562
     object BitBtn1: TBitBtn
-      Left = 497
+      Left = 513
       Top = 1
       Width = 72
       Height = 33
@@ -30,19 +30,19 @@ object FListProduct: TFListProduct
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn1Click
-      ExplicitLeft = 551
+      ExplicitLeft = 489
     end
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 570
+    Width = 586
     Height = 35
     Align = alTop
     Color = clAppWorkSpace
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 588
+    ExplicitWidth = 562
     object Splitter1: TSplitter
       Left = 79
       Top = 1
@@ -118,7 +118,7 @@ object FListProduct: TFListProduct
   object DBGrid1: TDBGrid
     Left = 0
     Top = 70
-    Width = 570
+    Width = 586
     Height = 287
     Align = alClient
     DataSource = DataSource1
@@ -168,11 +168,11 @@ object FListProduct: TFListProduct
   object Panel4: TPanel
     Left = 0
     Top = 35
-    Width = 570
+    Width = 586
     Height = 35
     Align = alTop
     TabOrder = 3
-    ExplicitWidth = 624
+    ExplicitWidth = 562
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4

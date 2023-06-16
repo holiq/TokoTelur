@@ -3,7 +3,7 @@ object FLogin: TFLogin
   Top = 0
   ClientHeight = 361
   ClientWidth = 589
-  Color = clActiveCaption
+  Color = clHighlight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -11,43 +11,80 @@ object FLogin: TFLogin
   Font.Style = []
   Position = poDesktopCenter
   TextHeight = 13
+  object Label1: TLabel
+    Left = 232
+    Top = 84
+    Width = 72
+    Height = 19
+    Caption = 'Username '
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 232
+    Top = 139
+    Width = 67
+    Height = 19
+    Caption = 'Password '
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Edit1: TEdit
-    Left = 24
-    Top = 16
-    Width = 121
+    Left = 232
+    Top = 112
+    Width = 137
     Height = 21
+    Color = clHighlight
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
-    TextHint = 'USSERNAME'
     OnKeyDown = Edit1KeyDown
   end
   object Edit2: TEdit
-    Left = 24
-    Top = 72
-    Width = 121
+    Left = 232
+    Top = 160
+    Width = 137
     Height = 21
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
-    TextHint = 'PASSWORD'
     OnKeyDown = Edit2KeyDown
   end
   object BitBtn1: TBitBtn
-    Left = 8
-    Top = 128
+    Left = 192
+    Top = 200
     Width = 75
     Height = 25
-    Caption = 'LOGIN'
+    Caption = 'Login'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clNavy
+    Font.Height = -18
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
-    Left = 89
-    Top = 128
+    Left = 329
+    Top = 200
     Width = 75
     Height = 25
-    Caption = 'EXIT'
+    Caption = 'Exit'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -18
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 3
     OnClick = BitBtn2Click
   end

@@ -3,7 +3,7 @@ object FListTransaction: TFListTransaction
   Top = 0
   Caption = 'FListTransaction'
   ClientHeight = 470
-  ClientWidth = 743
+  ClientWidth = 761
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,13 +16,13 @@ object FListTransaction: TFListTransaction
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 743
+    Width = 761
     Height = 35
     Align = alTop
     Color = clAppWorkSpace
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 775
+    ExplicitWidth = 735
     object Splitter4: TSplitter
       Left = 157
       Top = 1
@@ -95,11 +95,11 @@ object FListTransaction: TFListTransaction
   object Panel2: TPanel
     Left = 0
     Top = 35
-    Width = 743
+    Width = 761
     Height = 30
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 785
+    ExplicitWidth = 735
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
@@ -121,7 +121,7 @@ object FListTransaction: TFListTransaction
       AlignWithMargins = True
       Left = 185
       Top = 4
-      Width = 48
+      Width = 46
       Height = 22
       Align = alLeft
       Caption = 'FILTER: '
@@ -132,7 +132,7 @@ object FListTransaction: TFListTransaction
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
-      ExplicitLeft = 181
+      ExplicitHeight = 14
     end
     object Edit1: TEdit
       AlignWithMargins = True
@@ -143,33 +143,30 @@ object FListTransaction: TFListTransaction
       Align = alLeft
       TabOrder = 0
       OnChange = Edit1Change
-      ExplicitLeft = 54
-      ExplicitTop = 6
       ExplicitHeight = 21
     end
     object ComboBox1: TComboBox
       AlignWithMargins = True
-      Left = 239
+      Left = 237
       Top = 4
       Width = 137
       Height = 21
       Align = alLeft
       TabOrder = 1
       OnChange = ComboBox1Change
-      ExplicitLeft = 240
     end
   end
   object Panel3: TPanel
     Left = 0
     Top = 431
-    Width = 743
+    Width = 761
     Height = 39
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 413
-    ExplicitWidth = 775
+    ExplicitTop = 411
+    ExplicitWidth = 735
     object BitBtn5: TBitBtn
-      Left = 667
+      Left = 685
       Top = 1
       Width = 75
       Height = 37
@@ -177,13 +174,13 @@ object FListTransaction: TFListTransaction
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn5Click
-      ExplicitLeft = 699
+      ExplicitLeft = 659
     end
   end
   object DBGrid1: TDBGrid
     Left = 0
     Top = 99
-    Width = 743
+    Width = 761
     Height = 291
     Align = alClient
     BiDiMode = bdLeftToRight
@@ -256,16 +253,16 @@ object FListTransaction: TFListTransaction
   object Panel4: TPanel
     Left = 0
     Top = 390
-    Width = 743
+    Width = 761
     Height = 41
     Align = alBottom
     Color = clCream
     ParentBackground = False
     TabOrder = 4
-    ExplicitTop = 372
-    ExplicitWidth = 775
+    ExplicitTop = 370
+    ExplicitWidth = 735
     object Splitter5: TSplitter
-      Left = 664
+      Left = 682
       Top = 1
       Height = 39
       Align = alRight
@@ -273,7 +270,7 @@ object FListTransaction: TFListTransaction
       ExplicitTop = -3
     end
     object BtnNext: TBitBtn
-      Left = 667
+      Left = 685
       Top = 1
       Width = 75
       Height = 39
@@ -281,10 +278,10 @@ object FListTransaction: TFListTransaction
       Caption = 'NEXT'
       TabOrder = 0
       OnClick = BtnNextClick
-      ExplicitLeft = 699
+      ExplicitLeft = 659
     end
     object BtnPrevious: TBitBtn
-      Left = 589
+      Left = 607
       Top = 1
       Width = 75
       Height = 39
@@ -292,22 +289,21 @@ object FListTransaction: TFListTransaction
       Caption = 'PREVIOUS'
       TabOrder = 1
       OnClick = BtnPreviousClick
-      ExplicitLeft = 621
+      ExplicitLeft = 581
     end
   end
   object Panel5: TPanel
     Left = 0
     Top = 65
-    Width = 743
+    Width = 761
     Height = 34
     Align = alTop
     TabOrder = 5
-    ExplicitTop = 43
-    ExplicitWidth = 785
+    ExplicitWidth = 735
     object Label2: TLabel
       Left = 1
       Top = 1
-      Width = 741
+      Width = 759
       Height = 32
       Align = alClient
       Alignment = taCenter
@@ -319,8 +315,6 @@ object FListTransaction: TFListTransaction
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
-      ExplicitLeft = 314
-      ExplicitTop = 6
       ExplicitWidth = 115
       ExplicitHeight = 18
     end

@@ -15,13 +15,16 @@ uses
   URestock in 'URestock.pas' {FRestock},
   UDataModule in 'UDataModule.pas' {DataModule},
   UFunction in 'UFunction.pas',
-  UReport in 'UReport.pas' {FReport};
+  UReport in 'UReport.pas' {FReport},
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Iceberg Classico');
   Application.CreateForm(TFMainMenu, FMainMenu);
   Application.CreateForm(TDataModule, DataModule);
   Application.Run;

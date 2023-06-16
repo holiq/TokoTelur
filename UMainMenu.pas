@@ -5,14 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg, Vcl.Buttons;
+  Vcl.Imaging.jpeg, Vcl.Buttons, Vcl.Imaging.pngimage;
 
 type
   TFMainMenu = class(TForm)
     MainMenu1: TMainMenu;
-    Label1: TLabel;
-    Label2: TLabel;
-    Image1: TImage;
     USER1: TMenuItem;
     PRODUCT1: TMenuItem;
     TRANSACTION1: TMenuItem;
@@ -21,6 +18,7 @@ type
     Panel1: TPanel;
     BitBtn1: TBitBtn;
     REPORT1: TMenuItem;
+    Image1: TImage;
     procedure PENJUALAN1Click(Sender: TObject);
     procedure USER1Click(Sender: TObject);
     procedure PRODUCT1Click(Sender: TObject);
@@ -29,6 +27,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure REPORT1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,6 +46,14 @@ uses Ulistuser, Upenjualan, Urestock, Ulistproduct, ULogin, UListTransaction, UR
 procedure TFMainMenu.BitBtn1Click(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TFMainMenu.FormCreate(Sender: TObject);
+begin
+  //
+  Image1.Align:= alClient;
+  Image1.AutoSize:= true;
+  Image1.Center:= true;
 end;
 
 procedure TFMainMenu.FormShow(Sender: TObject);

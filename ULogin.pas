@@ -12,6 +12,8 @@ type
     Edit2: TEdit;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure BitBtn1Click(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
