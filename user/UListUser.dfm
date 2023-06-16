@@ -1,9 +1,9 @@
 object FListUser: TFListUser
   Left = 0
   Top = 0
-  Caption = 'DataModule.FDConnection1'
+  Caption = 'FListUser'
   ClientHeight = 392
-  ClientWidth = 586
+  ClientWidth = 596
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,13 +15,13 @@ object FListUser: TFListUser
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 586
+    Width = 596
     Height = 35
     Align = alTop
     Color = clActiveBorder
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 562
+    ExplicitWidth = 578
     object Splitter1: TSplitter
       Left = 1
       Top = 1
@@ -97,11 +97,11 @@ object FListUser: TFListUser
   object Panel2: TPanel
     Left = 0
     Top = 35
-    Width = 586
+    Width = 596
     Height = 35
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 562
+    ExplicitWidth = 578
     object Label1: TLabel
       AlignWithMargins = True
       Left = 4
@@ -137,14 +137,14 @@ object FListUser: TFListUser
   object Panel3: TPanel
     Left = 0
     Top = 357
-    Width = 586
+    Width = 596
     Height = 35
     Align = alBottom
     TabOrder = 2
     ExplicitTop = 337
-    ExplicitWidth = 562
+    ExplicitWidth = 578
     object BitBtn5: TBitBtn
-      Left = 510
+      Left = 520
       Top = 1
       Width = 75
       Height = 33
@@ -152,13 +152,13 @@ object FListUser: TFListUser
       Caption = 'CLOSE'
       TabOrder = 0
       OnClick = BitBtn5Click
-      ExplicitLeft = 486
+      ExplicitLeft = 502
     end
   end
   object DBGrid1: TDBGrid
     Left = 0
     Top = 70
-    Width = 586
+    Width = 596
     Height = 287
     Align = alClient
     DataSource = DataSource1
@@ -206,6 +206,7 @@ object FListUser: TFListUser
       end>
   end
   object QUser: TFDQuery
+    Active = True
     Connection = DataModule.FDConnection1
     SQL.Strings = (
       'SELECT * FROM users'

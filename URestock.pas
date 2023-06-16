@@ -23,8 +23,10 @@ type
     ComboBox1: TComboBox;
     Label5: TLabel;
     QProduct: TFDQuery;
-    QProductid: TLargeintField;
     QProductname: TStringField;
+    Label6: TLabel;
+    QProductid: TLargeintField;
+    QProductprice_kg: TIntegerField;
     QProductstock_kg: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -76,20 +78,14 @@ end;
 
 procedure TFRestock.ComboBox1Change(Sender: TObject);
 begin
-  name_product:= ComboBox1.Text;
-  dashPos:= Pos('-', name_product);
-  if dashPos > 0 then
-  begin
-    id_product:= Copy(name_product, dashPos + 1, Length(name_product));
-  end;
-
   QProduct.SQL.Clear;
-  QProduct.SQL.Text:= 'SELECT id, name, stock_kg FROM products WHERE id = :idp';
-  QProduct.ParamByName('idp').AsString:= id_product;
+  QProduct.SQL.Text:= 'SELECT id, name, price_kg, stock_kg FROM products WHERE name='+QuotedStr(ComboBox1.Text);
   QProduct.Open;
   while not QProduct.Eof do
   begin;
     stock_product:= QProductstock_kg.AsInteger;
+    id_product:= QProductid.AsString;
+    Label6.Caption:= '(Tersedia: '+IntToStr(stock_product)+'kg)';
     QProduct.Next;
   end;
   QProduct.Close;
@@ -115,11 +111,7 @@ begin
   try
     while not QProduct.Eof do
     begin
-      ComboBox1.Items.Add(
-       QProduct.FieldByName('name').AsString+'('+
-        QProduct.FieldByName('stock_kg').AsString+')-'+
-        QProduct.FieldByName('id').AsString
-      );
+      ComboBox1.Items.Add(QProduct.FieldByName('name').AsString);
       QProduct.Next;
     end;
   finally

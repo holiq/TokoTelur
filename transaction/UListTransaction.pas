@@ -209,8 +209,8 @@ begin
   'konfirmasi', MB_YESNO or MB_ICONINFORMATION) = idyes then
   begin
     QProduct.SQL.Clear;
-    QProduct.SQL.Text:= 'SELECT id, name, stock_kg FROM products WHERE id = :idp';
-    QProduct.ParamByName('idp').AsString:= id_product;
+    QProduct.SQL.Text:= 'SELECT id, name, stock_kg FROM products WHERE name = :idp';
+    QProduct.ParamByName('idp').AsString:= QTransactionproduct_name.AsString;
     QProduct.Open;
     while not QProduct.Eof do
     begin;

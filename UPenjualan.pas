@@ -12,10 +12,6 @@ uses
 type
   TFpenjualan = class(TForm)
     QProduct: TFDQuery;
-    QProductid: TLargeintField;
-    QProductname: TStringField;
-    QProductstock_kg: TIntegerField;
-    QProductprice_kg: TIntegerField;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -27,11 +23,16 @@ type
     ComboBox1: TComboBox;
     Panel1: TPanel;
     Label6: TLabel;
-    EditTotal: TEdit;
     Label7: TLabel;
     Label8: TLabel;
+    EditTotal: TEdit;
     EditBayar: TEdit;
     EditKembalian: TEdit;
+    Label4: TLabel;
+    QProductname: TStringField;
+    QProductid: TLargeintField;
+    QProductprice_kg: TIntegerField;
+    QProductstock_kg: TIntegerField;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -81,22 +82,16 @@ end;
 
 procedure TFpenjualan.ComboBox1Change(Sender: TObject);
 begin
-  name_product:= ComboBox1.Text;
-  dashPos:= Pos('-', name_product);
-  if dashPos > 0 then
-  begin
-    id_product:= Copy(name_product, dashPos + 1, Length(name_product));
-  end;
-
   QProduct.SQL.Clear;
-  QProduct.SQL.Text:= 'SELECT id, name, price_kg, stock_kg FROM products WHERE id = :idp';
-  QProduct.ParamByName('idp').AsString:= id_product;
+  QProduct.SQL.Text:= 'SELECT id, name, price_kg, stock_kg FROM products WHERE name='+QuotedStr(ComboBox1.Text);
   QProduct.Open;
   while not QProduct.Eof do
   begin
     EditPrice.Text:= QProductprice_kg.AsString;
     price_product:= QProductprice_kg.AsInteger;
     stock_product:= QProductstock_kg.AsInteger;
+    id_product:= QProductid.AsString;
+    Label4.Caption:= '(Tersedia: '+IntToStr(stock_product)+'kg)';
     QProduct.Next;
   end;
   QProduct.Close;
@@ -104,14 +99,16 @@ end;
 
 procedure TFpenjualan.EditBayarChange(Sender: TObject);
 begin
-  EditKembalian.Text:= FloatToStr(StrToFloat(EditTotal.Text)-StrToFloatDef(EditBayar.Text, 0))
+  EditKembalian.Text:= FloatToStr(StrToFloatDef(EditBayar.Text, 0)-StrToFloat(EditTotal.Text))
 end;
 
 procedure TFpenjualan.EditQtyChange(Sender: TObject);
 begin
   if (StrToIntDef(EditQty.Text, 0) > stock_product) AND (ComboBox1.Text<>'') then
+  begin
     MessageDlg('Stok tidak cukup', mtWarning, [Mbok], 0);
     Exit;
+  end;
 
   EditTotal.Text:= IntToStr(price_product*StrToIntDef(EditQty.Text, 0));
 end;
@@ -122,11 +119,7 @@ begin
   try
     while not QProduct.Eof do
     begin
-      ComboBox1.Items.Add(
-        QProduct.FieldByName('name').AsString+'('+
-        QProduct.FieldByName('stock_kg').AsString+')-'+
-        QProduct.FieldByName('id').AsString
-      );
+      ComboBox1.Items.Add(QProduct.FieldByName('name').AsString);
       QProduct.Next;
     end;
   finally

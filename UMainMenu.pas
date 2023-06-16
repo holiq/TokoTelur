@@ -10,7 +10,6 @@ uses
 type
   TFMainMenu = class(TForm)
     MainMenu1: TMainMenu;
-    USER1: TMenuItem;
     PRODUCT1: TMenuItem;
     TRANSACTION1: TMenuItem;
     PENJUALAN1: TMenuItem;
@@ -19,6 +18,7 @@ type
     BitBtn1: TBitBtn;
     REPORT1: TMenuItem;
     Image1: TImage;
+    USER1: TMenuItem;
     procedure PENJUALAN1Click(Sender: TObject);
     procedure USER1Click(Sender: TObject);
     procedure PRODUCT1Click(Sender: TObject);
@@ -50,7 +50,6 @@ end;
 
 procedure TFMainMenu.FormCreate(Sender: TObject);
 begin
-  //
   Image1.Align:= alClient;
   Image1.AutoSize:= true;
   Image1.Center:= true;

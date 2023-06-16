@@ -23,9 +23,15 @@ object Fpenjualan: TFpenjualan
   object Label2: TLabel
     Left = 166
     Top = 141
-    Width = 51
-    Height = 13
+    Width = 61
+    Height = 14
     Caption = 'QUANTITY'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object Label3: TLabel
     Left = 166
@@ -44,6 +50,19 @@ object Fpenjualan: TFpenjualan
     Font.Color = clWindowText
     Font.Height = -18
     Font.Name = 'Georgia'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 233
+    Top = 140
+    Width = 71
+    Height = 14
+    Caption = '(Tersedia: 0)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
   end
@@ -98,7 +117,7 @@ object Fpenjualan: TFpenjualan
       Left = 16
       Top = 16
       Width = 94
-      Height = 29
+      Height = 19
       Caption = 'Total Harga: '
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -135,51 +154,31 @@ object Fpenjualan: TFpenjualan
     end
     object EditTotal: TEdit
       Left = 116
-      Top = 13
+      Top = 18
       Width = 121
-      Height = 27
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
+      Height = 21
       TabOrder = 0
     end
     object EditBayar: TEdit
-      Left = 116
+      Left = 120
       Top = 56
       Width = 121
-      Height = 27
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
+      Height = 21
       TabOrder = 1
       OnChange = EditBayarChange
     end
     object EditKembalian: TEdit
-      Left = 116
-      Top = 98
+      Left = 120
+      Top = 104
       Width = 121
-      Height = 27
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
+      Height = 21
       TabOrder = 2
     end
   end
   object QProduct: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
-      'SELECT id, name, stock_kg, price_kg FROM products')
+      'SELECT id, name, price_kg, stock_kg FROM products')
     Left = 80
     Top = 165
     object QProductid: TLargeintField
@@ -194,14 +193,14 @@ object Fpenjualan: TFpenjualan
       Required = True
       Size = 255
     end
-    object QProductstock_kg: TIntegerField
-      FieldName = 'stock_kg'
-      Origin = 'stock_kg'
-      Required = True
-    end
     object QProductprice_kg: TIntegerField
       FieldName = 'price_kg'
       Origin = 'price_kg'
+      Required = True
+    end
+    object QProductstock_kg: TIntegerField
+      FieldName = 'stock_kg'
+      Origin = 'stock_kg'
       Required = True
     end
   end

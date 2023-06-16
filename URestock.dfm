@@ -54,6 +54,19 @@ object FRestock: TFRestock
     Font.Style = []
     ParentFont = False
   end
+  object Label6: TLabel
+    Left = 223
+    Top = 109
+    Width = 71
+    Height = 14
+    Caption = '(Tersedia: 0)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object EditQty: TEdit
     Left = 166
     Top = 129
@@ -106,7 +119,7 @@ object FRestock: TFRestock
   object QProduct: TFDQuery
     Connection = DataModule.FDConnection1
     SQL.Strings = (
-      'SELECT id, name, stock_kg FROM products')
+      'SELECT id, name, price_kg, stock_kg FROM products')
     Left = 88
     Top = 168
     object QProductid: TLargeintField
@@ -120,6 +133,11 @@ object FRestock: TFRestock
       Origin = 'name'
       Required = True
       Size = 255
+    end
+    object QProductprice_kg: TIntegerField
+      FieldName = 'price_kg'
+      Origin = 'price_kg'
+      Required = True
     end
     object QProductstock_kg: TIntegerField
       FieldName = 'stock_kg'

@@ -10,8 +10,6 @@ object DataModule: TDataModule
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
   TextHeight = 13
   object QTemp: TFDQuery
     Connection = FDConnection1
@@ -23,6 +21,7 @@ object DataModule: TDataModule
       'Database=toko_telur'
       'User_Name=root'
       'Server=localhost'
+      'UseSSL=True'
       'DriverID=MySQL')
     Connected = True
     LoginPrompt = False

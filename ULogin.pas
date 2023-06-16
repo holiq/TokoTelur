@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, System.UITypes;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, System.UITypes,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TFLogin = class(TForm)
@@ -14,6 +15,12 @@ type
     BitBtn2: TBitBtn;
     Label1: TLabel;
     Label2: TLabel;
+    Image2: TImage;
+    Image3: TImage;
+    Image1: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
     procedure BitBtn1Click(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -52,15 +59,13 @@ begin
     role:= DataModule.QTemp.FieldByName('role').AsString;
     fullName:= DataModule.QTemp.FieldByName('full_name').AsString;
     id_user:= DataModule.QTemp.FieldByName('id').AsString;
-    if role<>'owner' then
+    if role='kasir' then
     begin
       with FMainMenu do
       begin
-        MainMenu1.Items.Delete(1);
-        MainMenu1.Items.Delete(3);
-
-
-        //ShowMessage(MainMenu1.Item);
+        MainMenu1.Items[1].Free;
+        MainMenu1.Items[3].Free;
+        MainMenu1.Items[3].Free;
       end;
     end;
     FLogin.Close;

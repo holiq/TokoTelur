@@ -17901,8 +17901,8 @@ object FMainMenu: TFMainMenu
     Color = clMedGray
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 490
-    ExplicitWidth = 979
+    ExplicitTop = 531
+    ExplicitWidth = 1047
     object BitBtn1: TBitBtn
       Left = 979
       Top = 1
@@ -17912,7 +17912,7 @@ object FMainMenu: TFMainMenu
       Caption = 'EXIT'
       TabOrder = 0
       OnClick = BitBtn1Click
-      ExplicitLeft = 903
+      ExplicitLeft = 971
     end
   end
   object MainMenu1: TMainMenu
