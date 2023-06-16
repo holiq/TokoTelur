@@ -37,6 +37,21 @@ uses UDataModule, UListProduct, UFunction;
 
 procedure TFEditProduct.BitBtn1Click(Sender: TObject);
 begin
+  if EditName.Text='' then
+    ValidateMsg:= 'nama'
+  else if EditStock.Text='' then
+    ValidateMsg:= 'stok'
+  else if EditPrice.Text='' then
+    ValidateMsg:= 'harga'
+  else
+    ValidateMsg:= '';
+
+  if ValidateMsg<>'' then
+  begin
+    Validation(ValidateMsg);
+    Exit;
+  end;
+
   with DataModule.QTemp do
   begin
     Close;

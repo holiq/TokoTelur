@@ -11,7 +11,6 @@ object FLogin: TFLogin
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poDesktopCenter
-  Visible = True
   TextHeight = 13
   object Label1: TLabel
     Left = 232

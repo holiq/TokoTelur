@@ -54,6 +54,23 @@ uses UDataModule, UFunction;
 
 procedure TFRestock.BitBtn1Click(Sender: TObject);
 begin
+  if ComboBox1.Text='' then
+    ValidateMsg:= 'produk'
+  else if EditQty.Text='' then
+    ValidateMsg:= 'jumlah'
+  else if EditPrice.Text='' then
+    ValidateMsg:= 'harga'
+  else if EditTotal.Text='' then
+    ValidateMsg:= 'total harga'
+  else
+    ValidateMsg:= '';
+
+  if ValidateMsg<>'' then
+  begin
+    Validation(ValidateMsg);
+    Exit;
+  end;
+
   with DataModule.QTemp do
   begin;
     Close;

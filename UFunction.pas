@@ -8,14 +8,20 @@ interface
 function getmd5(SourceString: string): string;
 function dateNow(): string;
 function SnakeCase(const InputString: string): string;
+procedure Validation(Msg: string);
 
 var
-  username, password, role, id_user, fullName: string;
+  username, password, role, id_user, fullName, ValidateMsg: string;
   quantity, price_kg, total_price :integer;
   currentDate: TDateTime;
   formatDate, query: string;
 
 implementation
+
+procedure Validation(Msg: string);
+begin
+  Messagedlg(Msg+' tidak boleh kosong', mtWarning, [Mbok], 0);
+end;
 
 function SnakeCase(const InputString: string): string;
 var

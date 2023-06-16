@@ -83,20 +83,22 @@ object FAddUser: TFAddUser
       'owner'
       'kasir')
   end
-  object BtnUpdate: TBitBtn
+  object BitBtn1: TBitBtn
     Left = 259
     Top = 328
     Width = 75
     Height = 25
     Caption = 'SAVE'
     TabOrder = 4
+    OnClick = BitBtn1Click
   end
-  object BtnClose: TBitBtn
+  object BitBtn2: TBitBtn
     Left = 340
     Top = 328
     Width = 75
     Height = 25
     Caption = 'CLOSE'
     TabOrder = 5
+    OnClick = BitBtn2Click
   end
 end

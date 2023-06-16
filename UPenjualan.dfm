@@ -15,7 +15,7 @@ object Fpenjualan: TFpenjualan
   TextHeight = 13
   object Label1: TLabel
     Left = 166
-    Top = 72
+    Top = 85
     Width = 48
     Height = 13
     Caption = 'PRODUCT'

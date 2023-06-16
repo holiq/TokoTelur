@@ -17,8 +17,8 @@ type
     EditUsername: TEdit;
     EditPassword: TEdit;
     ComboBoxRole: TComboBox;
-    BtnUpdate: TBitBtn;
-    BtnClose: TBitBtn;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private
@@ -38,6 +38,23 @@ uses UDataModule, UListUser, UFunction;
 
 procedure TFAddUser.BitBtn1Click(Sender: TObject);
 begin
+  if EditName.Text='' then
+    ValidateMsg:= 'nama'
+  else if EditUsername.Text='' then
+    ValidateMsg:= 'username'
+  else if ComboBoxRole.Text='' then
+    ValidateMsg:= 'role'
+  else if EditPassword.Text='' then
+    ValidateMsg:= 'password'
+  else
+    ValidateMsg:= '';
+
+  if ValidateMsg<>'' then
+  begin
+    Validation(ValidateMsg);
+    Exit;
+  end;
+
   with DataModule.QTemp do
   begin;
     Close;

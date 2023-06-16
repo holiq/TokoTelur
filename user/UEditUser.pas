@@ -39,6 +39,23 @@ uses UFunction, UDataModule, UListUser;
 
 procedure TFEditUser.BtnUpdateClick(Sender: TObject);
 begin
+  if EditName.Text='' then
+    ValidateMsg:= 'nama'
+  else if EditUsername.Text='' then
+    ValidateMsg:= 'username'
+  else if ComboBoxRole.Text='' then
+    ValidateMsg:= 'role'
+  else if EditPassword.Text='' then
+    ValidateMsg:= 'password'
+  else
+    ValidateMsg:= '';
+
+  if ValidateMsg<>'' then
+  begin
+    Validation(ValidateMsg);
+    Exit;
+  end;
+
   with DataModule.QTemp do
   begin
     Close;
